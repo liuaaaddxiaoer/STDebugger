@@ -1,0 +1,6 @@
+framework module STDebuggerClient {
+  umbrella header "STDebuggerClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

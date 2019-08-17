@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'STDebuggerClient_Example' do
+  pod 'STDebuggerClient', :path => '../'
+end

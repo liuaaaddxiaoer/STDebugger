@@ -1,0 +1,16 @@
+PODS:
+  - STDebuggerClient (0.1.0)
+
+DEPENDENCIES:
+  - STDebuggerClient (from `../`)
+
+EXTERNAL SOURCES:
+  STDebuggerClient:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  STDebuggerClient: f334fe5d0db16cd37cbcac0c94607cf7457bd97e
+
+PODFILE CHECKSUM: 1cc4e51999be0ef8a2288344d295011ec67db30e
+
+COCOAPODS: 1.7.2
