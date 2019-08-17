@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		D0AC14A4230439C700A1E1B6 /* URLSessionHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC14A3230439C700A1E1B6 /* URLSessionHook.swift */; };
+		D0DEFD22230814DD007C96D8 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD21230814DD007C96D8 /* Client.swift */; };
+		D0DEFD24230815D9007C96D8 /* NetworkBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD23230815D9007C96D8 /* NetworkBrowser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		7E80CD356BDB8B13E5998B4A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		A83D78487BA2F762F1FBFD2A /* STDebuggerClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = STDebuggerClient.podspec; path = ../STDebuggerClient.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D0AC14A3230439C700A1E1B6 /* URLSessionHook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHook.swift; sourceTree = "<group>"; };
+		D0DEFD21230814DD007C96D8 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		D0DEFD23230815D9007C96D8 /* NetworkBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBrowser.swift; sourceTree = "<group>"; };
 		D427EAE0D48D7B472D68C75C /* Pods-STDebuggerClient_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STDebuggerClient_Tests.release.xcconfig"; path = "Target Support Files/Pods-STDebuggerClient_Tests/Pods-STDebuggerClient_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D7DBB62D35E6A66151C9155E /* Pods-STDebuggerClient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STDebuggerClient_Example.debug.xcconfig"; path = "Target Support Files/Pods-STDebuggerClient_Example/Pods-STDebuggerClient_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				D0AC14A3230439C700A1E1B6 /* URLSessionHook.swift */,
+				D0DEFD21230814DD007C96D8 /* Client.swift */,
+				D0DEFD23230815D9007C96D8 /* NetworkBrowser.swift */,
 			);
 			name = Classes;
 			path = ../../STDebuggerClient/Classes;
@@ -160,6 +166,7 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
+				206E9864211A7C0A32776532 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,6 +225,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		206E9864211A7C0A32776532 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-STDebuggerClient_Example/Pods-STDebuggerClient_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/STDebuggerClient/STDebuggerClient.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STDebuggerClient.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-STDebuggerClient_Example/Pods-STDebuggerClient_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E2C8A8FE6BCF4420FFBDC2F1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,6 +276,8 @@
 			files = (
 				D0AC14A4230439C700A1E1B6 /* URLSessionHook.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				D0DEFD24230815D9007C96D8 /* NetworkBrowser.swift in Sources */,
+				D0DEFD22230814DD007C96D8 /* Client.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

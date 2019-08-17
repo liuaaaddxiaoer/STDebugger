@@ -1,16 +1,23 @@
 PODS:
+  - CocoaAsyncSocket (7.6.3)
   - STDebuggerClient (0.1.0)
 
 DEPENDENCIES:
+  - CocoaAsyncSocket
   - STDebuggerClient (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CocoaAsyncSocket
 
 EXTERNAL SOURCES:
   STDebuggerClient:
     :path: "../"
 
 SPEC CHECKSUMS:
-  STDebuggerClient: f334fe5d0db16cd37cbcac0c94607cf7457bd97e
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  STDebuggerClient: 32f3244edaa01023d5ffabf7bbd5249deb2b751b
 
-PODFILE CHECKSUM: 1cc4e51999be0ef8a2288344d295011ec67db30e
+PODFILE CHECKSUM: a94aac4e37802d530d0137ab39ac84c76927f8ab
 
 COCOAPODS: 1.7.2

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        URLSessionHook().inject()
+        Client.shared.inject()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -22,10 +22,10 @@ class ViewController: UIViewController {
         
         
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.current)
-        
+
         let task = session.dataTask(with: URL.init(string: "http://yapi.base.eoffcn.com/api/group/list")!)
         task.resume()
-        
+
         self.task = task
     }
 

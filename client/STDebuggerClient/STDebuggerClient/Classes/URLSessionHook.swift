@@ -9,12 +9,19 @@
 import Foundation
 import UIKit
 import ObjectiveC.runtime
+
+
+
+
+
 open class URLSessionHook: NSObject {
+    
+    weak var hookDelegate: URLSessionHookDelegate?
     public override init() {
         super.init()
     }
     
-   @objc public func inject() {
+    @objc public func inject() {
         // iOS9的底层类
         let cfURLSessionClassName = NSString.init(string: "__NSCFURLLocalSessionConnection").utf8String!
         // iOS8
@@ -45,7 +52,9 @@ open class URLSessionHook: NSObject {
     func swizzleResumeWithClass(sessionClass: Any) {
         let anyClass: AnyClass = sessionClass as! AnyClass
         
-        let cmd: Selector = Selector.init(("resume"))
+        let name = NSString.init(string: "resume").utf8String!
+        
+        let cmd: Selector = sel_registerName(name)
         
         let method = class_getInstanceMethod(anyClass, cmd)
         
@@ -53,15 +62,17 @@ open class URLSessionHook: NSObject {
             // 获取方法实现
             let imp = method_getImplementation(resMethod)
             
-            typealias OldImpType = @convention(c) (AnyClass, Selector) -> Void
+            typealias OldImpType = @convention(c) (AnyObject, Selector) -> Void
             
             // imp是函数指针 将闭包转函数指针
             let oldImpBlock = unsafeBitCast(imp, to: OldImpType.self)
             
             
             // 闭包转OC的Block
-            let hookBlock :@convention(block) (AnyClass) -> Void = { wself in
+            let hookBlock :@convention(block) (AnyObject) -> Void = {[weak self] wself in
                 print("开始交换Resume")
+            
+                self?.hookDelegate?.urlSessionHookDidStart()
                 // 执行系统的方法
                 oldImpBlock(wself, cmd)
             }
@@ -87,15 +98,19 @@ open class URLSessionHook: NSObject {
             // 获取方法实现
             let imp = method_getImplementation(resMethod)
             
-            typealias OldImpType = @convention(c) (AnyClass, Selector, AnyObject) -> Void
+            typealias OldImpType = @convention(c) (AnyObject, Selector, AnyObject) -> Void
             
             // imp是函数指针 将闭包转函数指针
             let oldImpBlock = unsafeBitCast(imp, to: OldImpType.self)
             
             
             // 闭包转OC的Block
-            let hookBlock :@convention(block) (AnyClass, AnyObject) -> Void = { wself, arg in
+            let hookBlock :@convention(block) (AnyObject, AnyObject) -> Void = {[weak self] wself, arg in
                 print("开始交换URLSession结束数据方法")
+            
+                
+                let task = wself.value(forKeyPath: "task")
+                
                 // 执行系统的方法
                 oldImpBlock(wself, cmd, arg)
             }
@@ -120,14 +135,14 @@ open class URLSessionHook: NSObject {
             // 获取方法实现
             let imp = method_getImplementation(resMethod)
             
-            typealias OldImpType = @convention(c) (AnyClass, Selector, AnyObject) -> Void
+            typealias OldImpType = @convention(c) (AnyObject, Selector, AnyObject) -> Void
             
             // imp是函数指针 将闭包转函数指针
             let oldImpBlock = unsafeBitCast(imp, to: OldImpType.self)
             
             
             // 闭包转OC的Block
-            let hookBlock :@convention(block) (AnyClass, AnyObject) -> Void = { wself, arg in
+            let hookBlock :@convention(block) (AnyObject, AnyObject) -> Void = { wself, arg in
                 print("开始交换URLSession接收数据方法")
                 // 执行系统的方法
                 oldImpBlock(wself, cmd, arg)
@@ -156,18 +171,18 @@ open class URLSessionHook: NSObject {
             // 获取方法实现
             let imp = method_getImplementation(resMethod)
             
-            typealias OldImpType = @convention(c) (AnyClass, Selector, Any, Bool) -> Void
+            typealias OldImpType = @convention(c) (AnyObject, Selector, Any, Bool) -> Void
             
             // imp是函数指针 将闭包转函数指针
             let oldImpBlock = unsafeBitCast(imp, to: OldImpType.self)
             
             
             // 闭包转OC的Block
-            let hookBlock :@convention(block) (AnyClass, Any, Bool) -> Void = { wself, arg, sniff in
+            let hookBlock :@convention(block) (AnyObject, Any, Bool) -> Void = { wself, arg, sniff in
                 print("开始交换URLSession响应方法")
                 // 执行系统的方法
                 oldImpBlock(wself, cmd, arg, sniff)
-            
+                
             }
             
             // hookImp
@@ -183,4 +198,17 @@ open class URLSessionHook: NSObject {
         
         
     }
+}
+
+
+
+public protocol URLSessionHookDelegate: NSObjectProtocol {
+    
+    func urlSessionHookDidStart() -> Void
+    
+    func urlSessionHook(_ hook: URLSessionHook, dataTask: URLSessionDataTask, didReceive response: URLResponse) -> Void
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data)
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?)
 }

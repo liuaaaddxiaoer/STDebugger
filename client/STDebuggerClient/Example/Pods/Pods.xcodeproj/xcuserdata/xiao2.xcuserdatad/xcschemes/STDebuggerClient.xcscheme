@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BB056C214FB3CB96E4FF7FCE87C97DD4"
-               BuildableName = "STDebuggerClient"
+               BuildableName = "STDebuggerClient.framework"
                BlueprintName = "STDebuggerClient"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
