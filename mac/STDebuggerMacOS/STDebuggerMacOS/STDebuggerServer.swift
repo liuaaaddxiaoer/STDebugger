@@ -13,12 +13,20 @@ class Server: NSObject {
 
     static let shared = Server.init()
     
+    var selectRequestPanelRow: Int = 0 {
+        didSet {
+            selectRequestPacket = packets[selectRequestPanelRow < 0 ? 0 : selectRequestPanelRow]
+        }
+    }
+    var selectRequestPacket: Packet?
+    
     var service: NetService?
     
     var clientSockets: [GCDAsyncSocket] = []
     
     var serverSocket: GCDAsyncSocket?
-
+    
+    var packets: [Packet] = []
     
     deinit {
         self.service?.stop()
@@ -38,8 +46,7 @@ class Server: NSObject {
                 
                 try self.serverSocket?.accept(onPort: UInt16(ServerConfig.port))
                 self.serverSocket?.readData(withTimeout: -1, tag: 1)
-                
-                self.serverSocket?.connectedAddress
+            
             }catch _ {
                 print("连接失败")
             }
@@ -61,8 +68,19 @@ extension Server: GCDAsyncSocketDelegate {
         
        
         let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-        let packet = Packet.init(dict: dict as! [String : Any?])
+        if dict == nil {return};
         
+        
+        let packet = Packet.init(dict: dict as! [String : Any?])
+        if (packet == nil) {return}
+        
+        // 添加
+        packets.append(packet!)
+        
+        // 发送通知
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: receivePacketNotification), object: packet)
+        }
     }
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {

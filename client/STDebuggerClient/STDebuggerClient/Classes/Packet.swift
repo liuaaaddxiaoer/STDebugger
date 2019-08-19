@@ -22,9 +22,20 @@ extension Packet {
 
 extension Packet {
     
-    public convenience init(dict: [String : Any?]) {
+    public convenience init?(dict: [String : Any?]) {
         self.init()
-        startTime = Date.init(timeIntervalSince1970: dict["startTime"] as! TimeInterval)
+        
+        var hasEmpty = false
+        
+        for value in dict.values {
+            if value == nil {
+                hasEmpty = true
+            }
+        }
+        
+        if hasEmpty == true {return nil}
+        
+        startTime = Date.init(timeIntervalSince1970: (dict["startTime"] != nil) ? (dict["startTime"] as! TimeInterval) : (NSDate().timeIntervalSince1970))
         endTime = Date.init(timeIntervalSince1970: dict["endTime"] as! TimeInterval)
         data = (dict["data"] as? String)?.data(using: String.Encoding.utf8)
         duration = dict["duration"] as! TimeInterval
@@ -37,7 +48,7 @@ extension Packet {
     }
 }
 
-class Packet: NSObject{
+class Packet: NSObject {
     
     var startTime: Date?
     var endTime: Date?

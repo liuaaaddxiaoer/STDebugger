@@ -1,5 +1,5 @@
 //
-//  RequestPanelRowView.swift
+//  RequestPanelCellView.swift
 //  STDebuggerMacOS
 //
 //  Created by 小2 on 2019/8/19.
@@ -8,6 +8,7 @@
 
 import Cocoa
 
-class RequestPanelRowView: NSTableRowView {
-
+class RequestPanelCellView: NSTableCellView {
+    @IBOutlet weak var titleLabel: NSTextField!
+    
 }
