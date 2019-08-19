@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner">
+            <connections>
+                <outlet property="view" destination="XgC-yz-xTv" id="tKS-WV-uUZ"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="XgC-yz-xTv">
+            <rect key="frame" x="0.0" y="0.0" width="477" height="146"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6o9-FT-wwC">
+                    <rect key="frame" x="25" y="57" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="Vw7-yh-v6l"/>
+                        <constraint firstAttribute="height" constant="32" id="l2O-dT-hZu"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSBonjour" id="u93-O7-OCs"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cce-s6-e4r">
+                    <rect key="frame" x="75" y="65" width="37" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="oAP-qZ-fXJ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="6o9-FT-wwC" firstAttribute="leading" secondItem="XgC-yz-xTv" secondAttribute="leading" constant="25" id="0Gr-uO-vm0"/>
+                <constraint firstItem="cce-s6-e4r" firstAttribute="leading" secondItem="6o9-FT-wwC" secondAttribute="trailing" constant="20" id="OAr-ir-IIb"/>
+                <constraint firstItem="6o9-FT-wwC" firstAttribute="centerY" secondItem="XgC-yz-xTv" secondAttribute="centerY" id="W5i-ny-4n0"/>
+                <constraint firstItem="cce-s6-e4r" firstAttribute="centerY" secondItem="6o9-FT-wwC" secondAttribute="centerY" id="ea4-X6-ft0"/>
+            </constraints>
+            <point key="canvasLocation" x="-153.5" y="-316"/>
+        </customView>
+        <customObject id="Ibr-WP-BLF" customClass="NavMenuItemController" customModule="STDebuggerMacOS" customModuleProvider="target">
+            <connections>
+                <outlet property="icon" destination="6o9-FT-wwC" id="Xav-XR-4ao"/>
+                <outlet property="name" destination="cce-s6-e4r" id="ajw-z2-E96"/>
+                <outlet property="view" destination="XgC-yz-xTv" id="2Rf-Ef-Evr"/>
+            </connections>
+        </customObject>
+    </objects>
+    <resources>
+        <image name="NSBonjour" width="32" height="32"/>
+    </resources>
+</document>

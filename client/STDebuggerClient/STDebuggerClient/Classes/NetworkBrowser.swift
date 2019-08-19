@@ -8,11 +8,32 @@
 
 import Foundation
 import CocoaAsyncSocket
+
 class Browser : NSObject {
     
     var browser : NetServiceBrowser?
     var services: [NetService] = []
     var socketClient: GCDAsyncSocket?
+    
+    func sendPacket(packet: Packet) {
+        print(packet)
+        
+        
+        do {
+           
+            let dic = packet.toJson()
+            
+            let arData = try? JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            
+            // 发送
+           self.socketClient?.write(arData!, withTimeout: -1, tag: 1)
+            
+        } catch let err {
+            print(err)
+        }
+        
+        
+    }
     
     func inject() {
         DispatchQueue.main.async {
@@ -43,34 +64,38 @@ extension Browser: GCDAsyncSocketDelegate {
         
     }
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+        
+        
     }
+//    func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
+//    }
 }
 
 
 extension Browser: NetServiceBrowserDelegate {
-     public func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
+    public func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
         
     }
     
     
-     public func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
+    public func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
         
     }
     
     
-     public func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        
-        
-    }
-    
-    
-     public func netServiceBrowser(_ browser: NetServiceBrowser, didFindDomain domainString: String, moreComing: Bool) {
+    public func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
         
         
     }
     
     
-     public func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
+    public func netServiceBrowser(_ browser: NetServiceBrowser, didFindDomain domainString: String, moreComing: Bool) {
+        
+        
+    }
+    
+    
+    public func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
         self.services.append(service)
         service.delegate = self;
         service.resolve(withTimeout: Double(Int.max))
@@ -78,12 +103,12 @@ extension Browser: NetServiceBrowserDelegate {
     }
     
     
-     public func netServiceBrowser(_ browser: NetServiceBrowser, didRemoveDomain domainString: String, moreComing: Bool) {
+    public func netServiceBrowser(_ browser: NetServiceBrowser, didRemoveDomain domainString: String, moreComing: Bool) {
         
     }
     
     
-     public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
+    public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
         
         self.services = self.services.filter{$0 !== service}
     }
@@ -102,8 +127,8 @@ extension Browser: NetServiceDelegate {
         // 拿到远程服务器ip地址建立socket连接
         if let address = sender.addresses?[0] {
             do {
-             let result = try self.socketClient?.connect(toAddress: address)
-                print("连接结果\(String(describing: result))")
+                try self.socketClient?.connect(toAddress: address)
+                
             } catch let err {
                 print(err)
             }

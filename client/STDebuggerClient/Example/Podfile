@@ -1,6 +1,9 @@
 use_frameworks!
 
 target 'STDebuggerClient_Example' do
-  pod 'STDebuggerClient', :path => '../'
+    
+#  pod 'STDebuggerClient', :path => '../'
   pod 'CocoaAsyncSocket'
+  pod 'YYModel'
+
 end

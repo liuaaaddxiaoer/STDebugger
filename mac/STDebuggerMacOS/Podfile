@@ -6,5 +6,6 @@ target 'STDebuggerMacOS' do
   use_frameworks!
   pod 'CocoaAsyncSocket'
   # Pods for STDebuggerMacOS
+  pod 'YYModel'
 
 end

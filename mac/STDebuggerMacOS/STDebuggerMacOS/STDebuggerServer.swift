@@ -24,6 +24,7 @@ class Server: NSObject {
         self.service?.stop()
     }
     
+    
     func inject() {
         DispatchQueue.main.async {
             let service = NetService(domain: ServerConfig.domain, type: ServerConfig.type, name: ServerConfig.name, port: ServerConfig.port)
@@ -36,6 +37,9 @@ class Server: NSObject {
             do {
                 
                 try self.serverSocket?.accept(onPort: UInt16(ServerConfig.port))
+                self.serverSocket?.readData(withTimeout: -1, tag: 1)
+                
+                self.serverSocket?.connectedAddress
             }catch _ {
                 print("连接失败")
             }
@@ -45,6 +49,7 @@ class Server: NSObject {
 
 extension Server: GCDAsyncSocketDelegate {
     func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
+        newSocket.readData(withTimeout: -1, tag: 1)
         guard self.clientSockets.contains(newSocket) else {
             self.clientSockets.append(newSocket)
             return
@@ -52,11 +57,16 @@ extension Server: GCDAsyncSocketDelegate {
     }
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+        sock.readData(withTimeout: -1, tag: tag)
+        
+       
+        let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+        let packet = Packet.init(dict: dict as! [String : Any?])
         
     }
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-        self.clientSockets = self.clientSockets.filter{ $0==sock}
+        self.clientSockets = self.clientSockets.filter{ $0 !== sock}
     }
 }
 

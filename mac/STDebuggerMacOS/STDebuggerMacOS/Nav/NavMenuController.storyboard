@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qmv-cL-qgE">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Nav Menu Controller-->
+        <scene sceneID="lAH-dR-j0o">
+            <objects>
+                <viewController id="Qmv-cL-qgE" customClass="NavMenuController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="esT-Dz-4RP">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="593"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6P-ak-olI">
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="543"/>
+                                <clipView key="contentView" id="0UP-Ye-CzK">
+                                    <rect key="frame" x="0.0" y="0.0" width="220" height="543"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="TPl-L6-Mnu">
+                                            <rect key="frame" x="0.0" y="0.0" width="220" height="543"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" id="SN1-o0-99O">
+                                                <size key="itemSize" width="220" height="100"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="nRe-vY-7Go"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9gw-l6-yrC">
+                                    <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="kYg-s0-Q24">
+                                    <rect key="frame" x="204" y="0.0" width="16" height="543"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xjr-5u-Zzz">
+                                <rect key="frame" x="0.0" y="543" width="220" height="50"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bf0-GE-9rF">
+                                        <rect key="frame" x="95" y="15" width="112" height="20"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="小2的调试工具" id="F32-Og-VFe">
+                                            <font key="font" size="16" name=".PingFangSC-Medium"/>
+                                            <color key="textColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Bf0-GE-9rF" firstAttribute="centerY" secondItem="Xjr-5u-Zzz" secondAttribute="centerY" id="eoy-A5-ayS"/>
+                                    <constraint firstAttribute="height" constant="50" id="tSc-1d-HTc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bf0-GE-9rF" secondAttribute="trailing" constant="15" id="tVP-d4-FbD"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="r6P-ak-olI" secondAttribute="bottom" id="3P6-1l-BsI"/>
+                            <constraint firstAttribute="trailing" secondItem="r6P-ak-olI" secondAttribute="trailing" id="8ct-5l-6Ag"/>
+                            <constraint firstItem="r6P-ak-olI" firstAttribute="top" secondItem="esT-Dz-4RP" secondAttribute="top" constant="50" id="Af8-6N-atC"/>
+                            <constraint firstAttribute="trailing" secondItem="Xjr-5u-Zzz" secondAttribute="trailing" id="KDK-aP-eoB"/>
+                            <constraint firstItem="Xjr-5u-Zzz" firstAttribute="top" secondItem="esT-Dz-4RP" secondAttribute="top" id="P8d-0t-ecb"/>
+                            <constraint firstItem="r6P-ak-olI" firstAttribute="leading" secondItem="esT-Dz-4RP" secondAttribute="leading" id="S6W-f4-5mt"/>
+                            <constraint firstItem="r6P-ak-olI" firstAttribute="top" secondItem="Xjr-5u-Zzz" secondAttribute="bottom" id="gay-Lp-o21"/>
+                            <constraint firstItem="Xjr-5u-Zzz" firstAttribute="leading" secondItem="esT-Dz-4RP" secondAttribute="leading" id="jx6-WS-i3E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="TPl-L6-Mnu" id="5Kr-aB-VQ9"/>
+                        <outlet property="scrollView" destination="r6P-ak-olI" id="ygE-7x-9bI"/>
+                    </connections>
+                </viewController>
+                <customObject id="HIe-zq-8jW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-122" y="1032.5"/>
+        </scene>
+    </scenes>
+</document>
