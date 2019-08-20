@@ -15,7 +15,13 @@ class Server: NSObject {
     
     var selectRequestPanelRow: Int = 0 {
         didSet {
-            selectRequestPacket = packets[selectRequestPanelRow < 0 ? 0 : selectRequestPanelRow]
+            
+            if packets.count > 0 {
+                
+               let index = packets.count - 1 - (selectRequestPanelRow < 0 ? 0 : selectRequestPanelRow)
+                
+                selectRequestPacket = packets[index]
+            }
         }
     }
     var selectRequestPacket: Packet?

@@ -762,10 +762,10 @@
             </objects>
             <point key="canvasLocation" x="-174" y="1623"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Http Split Controller-->
         <scene sceneID="LvH-xF-wi3">
             <objects>
-                <splitViewController id="MjD-82-00D" sceneMemberID="viewController">
+                <splitViewController id="MjD-82-00D" customClass="HttpSplitController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="XO4-MK-1bH"/>
                         <splitViewItem id="ewt-7v-DJv"/>

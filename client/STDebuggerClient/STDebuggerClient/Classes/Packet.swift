@@ -11,11 +11,12 @@ import Foundation
 extension Packet {
     func setData() {
         expectedContentLength = response?.expectedContentLength ?? 0
-        method = task?.currentRequest?.httpMethod ?? "GET"
-        url = task?.currentRequest?.url?.absoluteString ?? "404 Error Address"
-        requestHeaders = task?.currentRequest?.allHTTPHeaderFields
+        method = task?.originalRequest?.httpMethod ?? "GET"
+        url = task?.originalRequest?.url?.absoluteString ?? "404 Error Address"
+        requestHeaders = task?.originalRequest?.allHTTPHeaderFields
         responseHeaders = response?.allHeaderFields as? [String: String]
         code = response?.statusCode ?? 0;
+        body = task?.originalRequest?.httpBody
     }
 }
 
@@ -45,6 +46,7 @@ extension Packet {
         requestHeaders = dict["requestHeaders"] as? [String : String]
         responseHeaders = dict["responseHeaders"] as? [String : String]
         code = dict["code"] as? Int
+        body = (dict["body"] as? String)?.data(using: String.Encoding.utf8)
     }
 }
 
@@ -69,6 +71,7 @@ class Packet: NSObject {
     
     var responseHeaders: [String: String]?
     var code: Int?
+    var body: Data?
     
     override init() {
         
@@ -77,16 +80,17 @@ class Packet: NSObject {
     
     func toJson() -> [String : Any?] {
         return [
-            "startTime" : startTime?.timeIntervalSince1970,
-            "endTime" : endTime?.timeIntervalSince1970,
+            "startTime" : startTime?.timeIntervalSince1970 ?? 0,
+            "endTime" : endTime?.timeIntervalSince1970 ?? 0,
             "data" : String.init(data: data ?? Data(capacity: 1), encoding: String.Encoding.utf8),
-            "duration" : duration,
+            "duration" : duration ,
             "expectedContentLength" : expectedContentLength,
             "method" : method,
-            "url" : url,
-            "requestHeaders" : requestHeaders,
-            "responseHeaders" : responseHeaders,
-            "code" : code
+            "url" : url ?? "",
+            "requestHeaders" : requestHeaders ?? ["" : ""],
+            "responseHeaders" : responseHeaders ?? ["" : ""],
+            "code" : code,
+            "body" : String.init(data: body ?? Data(capacity: 1), encoding: String.Encoding.utf8),
         ]
     }
 

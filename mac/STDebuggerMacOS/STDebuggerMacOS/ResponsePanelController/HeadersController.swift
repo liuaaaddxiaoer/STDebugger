@@ -100,13 +100,8 @@ extension HeadersController: NSTableViewDataSource {
                         return arrKeys[row]
                     }
                 } else if self.toolTabType == .body {
-                    
-                    // body
-                    if let keys = requestKeys {
-                        var arrKeys: [String] = Array(keys)
-                        return arrKeys[row]
-                    }
-                    
+                
+       
                 } else {
                     // query
                     if let keys = requestKeys {
@@ -117,9 +112,23 @@ extension HeadersController: NSTableViewDataSource {
                 
                 
             } else {
-                if let keys = responseKeys {
-                    var arrKeys: [String] = Array(keys)
-                    return arrKeys[row]
+              
+                
+                // headers
+                if self.toolTabType == .headers {
+                    if let keys = responseKeys {
+                        var arrKeys: [String] = Array(keys)
+                        return arrKeys[row]
+                    }
+                } else if self.toolTabType == .body {
+                    
+                    
+                } else {
+                    // query
+                    if let keys = requestKeys {
+                        var arrKeys: [String] = Array(keys)
+                        return arrKeys[row]
+                    }
                 }
             }
             

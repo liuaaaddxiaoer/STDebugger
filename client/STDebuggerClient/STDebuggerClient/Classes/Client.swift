@@ -8,14 +8,19 @@
 
 import Foundation
 
-class Client : NSObject {
+@objc open class Client : NSObject {
     
     private var browser = Browser()
     private var sessionHook = URLSessionHook()
     private var packets: [Packet] = []
     private var queue = DispatchQueue.init(label: "www.liuxiaoer.club")
-    static let shared = Client()
-    func inject() {
+    
+    @objc public static let client = Client()
+    
+    @objc open class func shared() -> Client{
+        return client
+    }
+    @objc open func inject() {
         sessionHook.hookDelegate = self
         sessionHook.inject()
         browser.inject()
@@ -28,25 +33,25 @@ class Client : NSObject {
 
 extension Client: URLSessionHookDelegate {
     
-    func urlSessionHookDidStart(_ hook: URLSessionHook, dataTask: URLSessionDataTask) {
+    public func urlSessionHookDidStart(_ hook: URLSessionHook, dataTask: URLSessionDataTask) {
         print(#function)
         let packet = getPacket(task: dataTask)
         packet.startTime = Date()
     }
     
-    func urlSessionHook(_ hook: URLSessionHook, dataTask: URLSessionDataTask, didReceive response: URLResponse) {
+    public func urlSessionHook(_ hook: URLSessionHook, dataTask: URLSessionDataTask, didReceive response: URLResponse) {
         print(#function)
         let packet = getPacket(task: dataTask)
         packet.response = response as? HTTPURLResponse
     }
     
-    func urlSession(_ hook: URLSessionHook, dataTask: URLSessionDataTask, didReceive data: Data) {
+    public func urlSession(_ hook: URLSessionHook, dataTask: URLSessionDataTask, didReceive data: Data) {
         print(#function)
         let packet = getPacket(task: dataTask)
         packet.data = data
     }
     
-    func urlSession(_ hook: URLSessionHook, task: URLSessionDataTask, didCompleteWithError error: Error?) {
+    public func urlSession(_ hook: URLSessionHook, task: URLSessionDataTask, didCompleteWithError error: Error?) {
         print(#function)
         let packet = getPacket(task: task)
         packet.endTime = Date()

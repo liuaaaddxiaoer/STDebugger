@@ -10,6 +10,8 @@
 		D0065683230AC643003A5F2F /* ResponsePanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0065682230AC643003A5F2F /* ResponsePanelController.swift */; };
 		D0065686230ACC09003A5F2F /* HeadersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0065684230ACC09003A5F2F /* HeadersController.swift */; };
 		D0065689230ADF4F003A5F2F /* ToolPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0065688230ADF4F003A5F2F /* ToolPanelController.swift */; };
+		D006568B230B8598003A5F2F /* BodyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006568A230B8598003A5F2F /* BodyController.swift */; };
+		D006568D230B87E3003A5F2F /* HttpSplitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006568C230B87E3003A5F2F /* HttpSplitController.swift */; };
 		D081718B230A7DD70081584B /* RequestPanelCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081718A230A7DD70081584B /* RequestPanelCellView.swift */; };
 		D081718F230AB8720081584B /* ResponsePanelController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D081718D230AB8720081584B /* ResponsePanelController.storyboard */; };
 		D0C4DBEF230A718800EC4405 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4DBEE230A718800EC4405 /* Const.swift */; };
@@ -43,6 +45,8 @@
 		D0065682230AC643003A5F2F /* ResponsePanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePanelController.swift; sourceTree = "<group>"; };
 		D0065684230ACC09003A5F2F /* HeadersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadersController.swift; sourceTree = "<group>"; };
 		D0065688230ADF4F003A5F2F /* ToolPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolPanelController.swift; sourceTree = "<group>"; };
+		D006568A230B8598003A5F2F /* BodyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyController.swift; sourceTree = "<group>"; };
+		D006568C230B87E3003A5F2F /* HttpSplitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpSplitController.swift; sourceTree = "<group>"; };
 		D081718A230A7DD70081584B /* RequestPanelCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPanelCellView.swift; sourceTree = "<group>"; };
 		D081718D230AB8720081584B /* ResponsePanelController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ResponsePanelController.storyboard; sourceTree = "<group>"; };
 		D0C4DBEE230A718800EC4405 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				D0065682230AC643003A5F2F /* ResponsePanelController.swift */,
 				D0065684230ACC09003A5F2F /* HeadersController.swift */,
 				D0065688230ADF4F003A5F2F /* ToolPanelController.swift */,
+				D006568A230B8598003A5F2F /* BodyController.swift */,
 			);
 			path = ResponsePanelController;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				D0DEFD1D23080A19007C96D8 /* STDebuggerServer.swift */,
 				D0DEFD1F23080AA8007C96D8 /* STDebuggerConfig.swift */,
 				D0C4DBEE230A718800EC4405 /* Const.swift */,
+				D006568C230B87E3003A5F2F /* HttpSplitController.swift */,
 			);
 			path = STDebuggerMacOS;
 			sourceTree = "<group>";
@@ -313,7 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D006568D230B87E3003A5F2F /* HttpSplitController.swift in Sources */,
 				D081718B230A7DD70081584B /* RequestPanelCellView.swift in Sources */,
+				D006568B230B8598003A5F2F /* BodyController.swift in Sources */,
 				D0C4DBF4230A76B700EC4405 /* RequestPanelRowView.swift in Sources */,
 				D0DEFD1E23080A19007C96D8 /* STDebuggerServer.swift in Sources */,
 				E3D2BE872308A77F00CAEC46 /* NavMenuController.swift in Sources */,

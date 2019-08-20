@@ -148,15 +148,37 @@
         <!--Body-->
         <scene sceneID="jef-iu-vKH">
             <objects>
-                <viewController title="Body" id="iiS-E4-y2Q" sceneMemberID="viewController">
+                <viewController title="Body" id="iiS-E4-y2Q" customClass="BodyController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qVY-te-PVD">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-r1-mLj">
+                                <rect key="frame" x="-2" y="0.0" width="454" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="TBf-e0-n8R"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="mdA-sd-jmI">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ePf-r1-mLj" secondAttribute="bottom" id="ND0-jO-uKu"/>
+                            <constraint firstItem="ePf-r1-mLj" firstAttribute="leading" secondItem="qVY-te-PVD" secondAttribute="leading" id="PYD-hh-wSv"/>
+                            <constraint firstAttribute="trailing" secondItem="ePf-r1-mLj" secondAttribute="trailing" id="chE-0v-JFg"/>
+                            <constraint firstItem="ePf-r1-mLj" firstAttribute="top" secondItem="qVY-te-PVD" secondAttribute="top" id="zuM-I2-67x"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="content" destination="ePf-r1-mLj" id="ZfE-iw-or3"/>
+                    </connections>
                 </viewController>
                 <customObject id="iUw-j0-ZxY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="657" y="2898"/>
+            <point key="canvasLocation" x="548" y="2898"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

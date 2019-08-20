@@ -23,10 +23,10 @@ class Browser : NSObject {
            
             let dic = packet.toJson()
             
-            let arData = try? JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            let arData = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
             
             // 发送
-           self.socketClient?.write(arData!, withTimeout: -1, tag: 1)
+            self.socketClient?.write(arData, withTimeout: -1, tag: 1)
             
         } catch let err {
             print(err)
@@ -38,7 +38,7 @@ class Browser : NSObject {
     func inject() {
         DispatchQueue.main.async {
             let browser = NetServiceBrowser()
-            browser.schedule(in: RunLoop.current, forMode: .commonModes)
+            browser.schedule(in: RunLoop.current, forMode: .common)
             browser.delegate = self
             browser.searchForServices(ofType: "_xiao2._tcp", inDomain: "")
             self.browser = browser
