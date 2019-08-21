@@ -25,6 +25,7 @@ class ViewController: NSViewController {
         let window = NSApplication.shared.windows[0]
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
+        window.contentMinSize = NSSize(width: 1350, height: 820)
         
         
         effectView.frame = window.contentView?.bounds ?? NSRect(x: 0, y: 0, width: 0, height: 0)
@@ -60,12 +61,12 @@ class ViewController: NSViewController {
     
     fileprivate func setupBgImage() {
         
-        let img = NSImage(named: "bg.jpg")!
+        let img = NSImage(named: "bg2.jpg")!
 //
         let sourceRef = CGImageSourceCreateWithData(img.tiffRepresentation! as CFData, nil)!
         view.layer?.opacity = 1
         view.layer?.allowsGroupOpacity = false
-//        view.layer?.contents = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil)
+        view.layer?.contents = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil)
     
     }
     
@@ -76,7 +77,7 @@ class ViewController: NSViewController {
     
     override func mouseDown(with event: NSEvent) {
         
-        let s = Server.shared
+//        let s = Server.shared
     }
     
     

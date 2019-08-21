@@ -712,15 +712,34 @@
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="KBK-J0-gwt">
                                 <rect key="frame" x="0.0" y="0.0" width="384" height="270"/>
-                                <connections>
-                                    <segue destination="Dh4-ch-PvP" kind="embed" id="rr2-fg-fJR"/>
-                                </connections>
                             </containerView>
+                            <tabView initialItem="Gev-NB-c2Q" translatesAutoresizingMaskIntoConstraints="NO" id="lLy-C3-1nE">
+                                <rect key="frame" x="-7" y="-10" width="398" height="286"/>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="Tab" identifier="" id="Gq9-nP-faT">
+                                        <view key="view" id="RtT-1U-t88">
+                                            <rect key="frame" x="10" y="33" width="378" height="240"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="View" identifier="" id="Gev-NB-c2Q">
+                                        <view key="view" id="51f-9E-cxl">
+                                            <rect key="frame" x="10" y="33" width="378" height="240"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KBK-J0-gwt" secondAttribute="trailing" id="07e-dz-2dg"/>
                             <constraint firstItem="KBK-J0-gwt" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="1Sq-GU-ntg"/>
+                            <constraint firstItem="lLy-C3-1nE" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="8WN-R3-yyb"/>
                             <constraint firstItem="KBK-J0-gwt" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="GKb-eA-yXy"/>
+                            <constraint firstItem="lLy-C3-1nE" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="HJa-YV-xGj"/>
+                            <constraint firstAttribute="trailing" secondItem="lLy-C3-1nE" secondAttribute="trailing" id="Lz5-NU-0hF"/>
+                            <constraint firstAttribute="bottom" secondItem="lLy-C3-1nE" secondAttribute="bottom" id="Z4p-Tr-4eM"/>
                             <constraint firstAttribute="bottom" secondItem="KBK-J0-gwt" secondAttribute="bottom" id="q8x-9W-cvT"/>
                         </constraints>
                     </view>
@@ -770,7 +789,7 @@
                         <splitViewItem id="XO4-MK-1bH"/>
                         <splitViewItem id="ewt-7v-DJv"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" id="D2F-Bn-iDA">
+                    <splitView key="splitView" autosaveName="CustomSplitView" dividerStyle="thin" id="D2F-Bn-iDA" customClass="CustomSplitView" customModule="STDebuggerMacOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>

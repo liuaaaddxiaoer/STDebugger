@@ -23,6 +23,7 @@
 		D0DEFD1C230809A5007C96D8 /* demo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD1B230809A5007C96D8 /* demo.m */; };
 		D0DEFD1E23080A19007C96D8 /* STDebuggerServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD1D23080A19007C96D8 /* STDebuggerServer.swift */; };
 		D0DEFD2023080AA8007C96D8 /* STDebuggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD1F23080AA8007C96D8 /* STDebuggerConfig.swift */; };
+		E32188EF230C17AA008593FF /* CustomSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32188EE230C17AA008593FF /* CustomSplitView.swift */; };
 		E37A13E123086FF6001AAA5B /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A13E023086FF6001AAA5B /* Packet.swift */; };
 		E3C131DD230939DD00F9FCCF /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3C131DC230939DD00F9FCCF /* bg.jpg */; };
 		E3C131DF23094B6A00F9FCCF /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3C131DE23094B6A00F9FCCF /* bg2.jpg */; };
@@ -64,6 +65,7 @@
 		D0DEFD1D23080A19007C96D8 /* STDebuggerServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDebuggerServer.swift; sourceTree = "<group>"; };
 		D0DEFD1F23080AA8007C96D8 /* STDebuggerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDebuggerConfig.swift; sourceTree = "<group>"; };
 		DF22E97A8D48DC2A697D8210 /* Pods-STDebuggerMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STDebuggerMacOS.debug.xcconfig"; path = "Target Support Files/Pods-STDebuggerMacOS/Pods-STDebuggerMacOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E32188EE230C17AA008593FF /* CustomSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitView.swift; sourceTree = "<group>"; };
 		E37A13E023086FF6001AAA5B /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Packet.swift; path = ../../../client/STDebuggerClient/STDebuggerClient/Classes/Packet.swift; sourceTree = "<group>"; };
 		E3C131DC230939DD00F9FCCF /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		E3C131DE23094B6A00F9FCCF /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				D0065684230ACC09003A5F2F /* HeadersController.swift */,
 				D0065688230ADF4F003A5F2F /* ToolPanelController.swift */,
 				D006568A230B8598003A5F2F /* BodyController.swift */,
+				E32188EE230C17AA008593FF /* CustomSplitView.swift */,
 			);
 			path = ResponsePanelController;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				E3D2BE872308A77F00CAEC46 /* NavMenuController.swift in Sources */,
 				D0065686230ACC09003A5F2F /* HeadersController.swift in Sources */,
 				D0DEFD1C230809A5007C96D8 /* demo.m in Sources */,
+				E32188EF230C17AA008593FF /* CustomSplitView.swift in Sources */,
 				D0065689230ADF4F003A5F2F /* ToolPanelController.swift in Sources */,
 				E3D2BE8F2308EE0500CAEC46 /* NavMenuItemController.swift in Sources */,
 				D0C4DBEF230A718800EC4405 /* Const.swift in Sources */,

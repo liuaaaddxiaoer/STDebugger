@@ -22,15 +22,23 @@ class RequestPanelController: NSViewController {
     
     fileprivate func initializeTableViewStyle() {
         tableView.allowsEmptySelection = false
+        tableView.enclosingScrollView?.drawsBackground = false
+        tableView.enclosingScrollView?.backgroundColor = NSColor.red
+        tableView.headerView?.wantsLayer = true
+        tableView.gridColor = NSColor.clear
+        tableView.headerView?.layer?.backgroundColor = NSColor(white: 1, alpha: 0.1).cgColor
+        tableView.enclosingScrollView?.borderType = NSBorderType.noBorder
+        tableView.wantsLayer = true
         tableView.backgroundColor = NSColor.clear
         tableView.rowHeight = 40
-        tableView.gridColor = NSColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
+//        tableView.gridColor = NSColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
         tableView.gridStyleMask = [.solidVerticalGridLineMask, .solidHorizontalGridLineMask]
         tableView.allowsColumnResizing = true
         tableView.intercellSpacing = NSSize(width: 10, height: 0)
         tableView.allowsMultipleSelection = true
-        tableView.usesAlternatingRowBackgroundColors = true
+        tableView.usesAlternatingRowBackgroundColors = false
         tableView.allowsTypeSelect = true
+        
         
         // 注册view
         tableView.register(NSNib(nibNamed: "RequestPanelRowView", bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier.init("row"))

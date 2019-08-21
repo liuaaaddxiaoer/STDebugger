@@ -25,10 +25,24 @@ class HeadersController: NSViewController {
         
         self.packet = Server.shared.selectRequestPacket
         
+        // 样式
+        initializeStyles()
+        
         // 通知
         initializeNotification()
     }
     
+    func initializeStyles() {
+        
+        tableView.wantsLayer = true
+        tableView.rowHeight = 44.0
+        tableView.enclosingScrollView?.borderType = NSBorderType.noBorder
+        tableView.backgroundColor = NSColor.clear
+        tableView.gridColor = NSColor.clear
+        tableView.usesAlternatingRowBackgroundColors = false
+        tableView.enclosingScrollView?.drawsBackground = false
+        
+    }
 }
 
 extension HeadersController {

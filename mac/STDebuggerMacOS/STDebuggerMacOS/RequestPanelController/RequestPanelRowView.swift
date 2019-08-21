@@ -9,5 +9,11 @@
 import Cocoa
 
 class RequestPanelRowView: NSTableRowView {
-
+    override func drawSelection(in dirtyRect: NSRect) {
+        if selectionHighlightStyle != .none{
+            let path = NSBezierPath.init(rect: dirtyRect)
+            NSColor(white: 1, alpha: 0.3).setFill()
+            path.fill()
+        }
+    }
 }

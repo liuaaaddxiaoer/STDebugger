@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "STDebuggerMacOS/STDebuggerServer.swift"
-            timestampString = "587793370.774359"
+            timestampString = "587994397.66978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "socketDidDisconnect(_:withError:)"
+            landmarkName = "socket(_:didAcceptNewSocket:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "STDebuggerMacOS/STDebuggerServer.swift"
-            timestampString = "587793370.77475"
+            timestampString = "587994397.669853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "socket(_:didAcceptNewSocket:)"
+            landmarkName = "inject()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "STDebuggerMacOS/STDebuggerServer.swift"
-            timestampString = "587793370.775032"
+            timestampString = "587994397.6699311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
-            landmarkName = "socket(_:didRead:withTag:)"
+            landmarkName = "socket(_:didAcceptNewSocket:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -109,7 +109,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "STDebuggerMacOS/Nav/NavMenuController.swift"
-            timestampString = "587879690.913169"
+            timestampString = "587994253.448507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -125,12 +125,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "STDebuggerMacOS/RequestPanelController/RequestPanelController.swift"
-            timestampString = "587879690.913234"
+            timestampString = "587998832.603876"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "tableView(_:rowViewForRow:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "receiveClientPacket(obj:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STDebuggerMacOS/ResponsePanelController/HeadersController.swift"
+            timestampString = "587998832.603999"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "initializeStyles()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
