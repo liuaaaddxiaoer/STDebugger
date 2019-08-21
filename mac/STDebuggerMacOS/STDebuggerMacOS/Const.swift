@@ -34,3 +34,6 @@ let toggleRequestTabTypeNotification = "toggleRequestTabTypeNotification"
 
 /// Headers/Body/Query Tab切换通知
 let toggleToolTabTypeNotification = "toggleToolTabTypeNotification"
+
+/// 左边导航栏切换选择通知
+let menuNavToggleIndexNotification = "menuNavToggleIndexNotification"

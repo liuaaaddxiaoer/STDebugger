@@ -73,6 +73,10 @@ extension NavMenuController: NSCollectionViewDataSource {
 extension NavMenuController: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         selectedIndexPath = indexPaths
+        
+        let index = indexPaths.first?.item ?? 0
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: menuNavToggleIndexNotification), object: index)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {

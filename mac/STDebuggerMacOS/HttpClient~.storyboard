@@ -685,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -748,6 +748,31 @@
             </objects>
             <point key="canvasLocation" x="-174" y="1623"/>
         </scene>
+        <!--Http Split Controller-->
+        <scene sceneID="LvH-xF-wi3">
+            <objects>
+                <splitViewController id="MjD-82-00D" customClass="HttpSplitController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="XO4-MK-1bH"/>
+                        <splitViewItem id="ewt-7v-DJv"/>
+                    </splitViewItems>
+                    <splitView key="splitView" autosaveName="CustomSplitView" dividerStyle="thin" id="D2F-Bn-iDA" customClass="CustomSplitView" customModule="STDebuggerMacOS" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="MjD-82-00D" id="xpg-0m-HEg"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="D2F-Bn-iDA" id="QK8-fY-Mrg"/>
+                        <segue destination="gWx-3Q-tKr" kind="relationship" relationship="splitItems" id="W1L-2U-UfH"/>
+                        <segue destination="9mY-jT-3nF" kind="relationship" relationship="splitItems" id="v8C-3m-jkD"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="obN-i7-MEF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="1638"/>
+        </scene>
         <!--RequestPanelController-->
         <scene sceneID="Nlp-MU-qNL">
             <objects>
@@ -762,7 +787,7 @@
                 <controllerPlaceholder storyboardName="ResponsePanelController" id="9mY-jT-3nF" sceneMemberID="viewController"/>
                 <customObject id="gaq-8f-zK8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327" y="1726"/>
+            <point key="canvasLocation" x="765" y="1972"/>
         </scene>
     </scenes>
 </document>

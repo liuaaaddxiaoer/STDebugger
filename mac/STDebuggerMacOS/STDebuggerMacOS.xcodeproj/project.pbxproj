@@ -25,6 +25,10 @@
 		D0DEFD2023080AA8007C96D8 /* STDebuggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD1F23080AA8007C96D8 /* STDebuggerConfig.swift */; };
 		E32188EF230C17AA008593FF /* CustomSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32188EE230C17AA008593FF /* CustomSplitView.swift */; };
 		E37A13E123086FF6001AAA5B /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A13E023086FF6001AAA5B /* Packet.swift */; };
+		E3AEFDC7230D7011006BB115 /* ContentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AEFDC6230D7011006BB115 /* ContentContainerViewController.swift */; };
+		E3AEFDC9230D758B006BB115 /* HttpClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3AEFDC8230D758B006BB115 /* HttpClient.storyboard */; };
+		E3AEFDCD230D78FD006BB115 /* UserDefaultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AEFDCB230D78FD006BB115 /* UserDefaultsController.swift */; };
+		E3AEFDCE230D78FD006BB115 /* UserDefaultsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AEFDCC230D78FD006BB115 /* UserDefaultsController.xib */; };
 		E3C131DD230939DD00F9FCCF /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3C131DC230939DD00F9FCCF /* bg.jpg */; };
 		E3C131DF23094B6A00F9FCCF /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3C131DE23094B6A00F9FCCF /* bg2.jpg */; };
 		E3C131E323095FB100F9FCCF /* RequestPanelController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C131E123095FB100F9FCCF /* RequestPanelController.storyboard */; };
@@ -67,6 +71,10 @@
 		DF22E97A8D48DC2A697D8210 /* Pods-STDebuggerMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STDebuggerMacOS.debug.xcconfig"; path = "Target Support Files/Pods-STDebuggerMacOS/Pods-STDebuggerMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E32188EE230C17AA008593FF /* CustomSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitView.swift; sourceTree = "<group>"; };
 		E37A13E023086FF6001AAA5B /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Packet.swift; path = ../../../client/STDebuggerClient/STDebuggerClient/Classes/Packet.swift; sourceTree = "<group>"; };
+		E3AEFDC6230D7011006BB115 /* ContentContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentContainerViewController.swift; sourceTree = "<group>"; };
+		E3AEFDC8230D758B006BB115 /* HttpClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HttpClient.storyboard; sourceTree = "<group>"; };
+		E3AEFDCB230D78FD006BB115 /* UserDefaultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsController.swift; sourceTree = "<group>"; };
+		E3AEFDCC230D78FD006BB115 /* UserDefaultsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDefaultsController.xib; sourceTree = "<group>"; };
 		E3C131DC230939DD00F9FCCF /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		E3C131DE23094B6A00F9FCCF /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
 		E3C131E123095FB100F9FCCF /* RequestPanelController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RequestPanelController.storyboard; sourceTree = "<group>"; };
@@ -144,6 +152,8 @@
 		D0DEFD0823080765007C96D8 /* STDebuggerMacOS */ = {
 			isa = PBXGroup;
 			children = (
+				E3AEFDCA230D78DB006BB115 /* SP */,
+				E3AEFDC8230D758B006BB115 /* HttpClient.storyboard */,
 				D081718C230AB8720081584B /* ResponsePanelController */,
 				E3C131DE23094B6A00F9FCCF /* bg2.jpg */,
 				E3C131E023095FB100F9FCCF /* RequestPanelController */,
@@ -163,8 +173,18 @@
 				D0DEFD1F23080AA8007C96D8 /* STDebuggerConfig.swift */,
 				D0C4DBEE230A718800EC4405 /* Const.swift */,
 				D006568C230B87E3003A5F2F /* HttpSplitController.swift */,
+				E3AEFDC6230D7011006BB115 /* ContentContainerViewController.swift */,
 			);
 			path = STDebuggerMacOS;
+			sourceTree = "<group>";
+		};
+		E3AEFDCA230D78DB006BB115 /* SP */ = {
+			isa = PBXGroup;
+			children = (
+				E3AEFDCB230D78FD006BB115 /* UserDefaultsController.swift */,
+				E3AEFDCC230D78FD006BB115 /* UserDefaultsController.xib */,
+			);
+			path = SP;
 			sourceTree = "<group>";
 		};
 		E3C131E023095FB100F9FCCF /* RequestPanelController */ = {
@@ -262,7 +282,9 @@
 				D0DEFD0E23080767007C96D8 /* Assets.xcassets in Resources */,
 				D0DEFD1123080767007C96D8 /* Main.storyboard in Resources */,
 				E3D2BE822308A3FC00CAEC46 /* NavMenuController.storyboard in Resources */,
+				E3AEFDC9230D758B006BB115 /* HttpClient.storyboard in Resources */,
 				E3C131DF23094B6A00F9FCCF /* bg2.jpg in Resources */,
+				E3AEFDCE230D78FD006BB115 /* UserDefaultsController.xib in Resources */,
 				E3C131EA23096A0B00F9FCCF /* RequestPanelRowView.xib in Resources */,
 				E3D2BE952308EE8700CAEC46 /* demo2.xib in Resources */,
 				D081718F230AB8720081584B /* ResponsePanelController.storyboard in Resources */,
@@ -322,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3AEFDC7230D7011006BB115 /* ContentContainerViewController.swift in Sources */,
 				D006568D230B87E3003A5F2F /* HttpSplitController.swift in Sources */,
 				D081718B230A7DD70081584B /* RequestPanelCellView.swift in Sources */,
 				D006568B230B8598003A5F2F /* BodyController.swift in Sources */,
@@ -331,6 +354,7 @@
 				D0065686230ACC09003A5F2F /* HeadersController.swift in Sources */,
 				D0DEFD1C230809A5007C96D8 /* demo.m in Sources */,
 				E32188EF230C17AA008593FF /* CustomSplitView.swift in Sources */,
+				E3AEFDCD230D78FD006BB115 /* UserDefaultsController.swift in Sources */,
 				D0065689230ADF4F003A5F2F /* ToolPanelController.swift in Sources */,
 				E3D2BE8F2308EE0500CAEC46 /* NavMenuItemController.swift in Sources */,
 				D0C4DBEF230A718800EC4405 /* Const.swift in Sources */,
