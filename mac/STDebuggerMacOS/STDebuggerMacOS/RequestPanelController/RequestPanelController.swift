@@ -11,6 +11,8 @@ import Cocoa
 class RequestPanelController: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
+    
+    @IBOutlet weak var garbageBtn: NSButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -20,7 +22,23 @@ class RequestPanelController: NSViewController {
         initializeNotification()
     }
     
+    // 清理包
+    @IBAction func cleanPackets(_ sender: NSButton) {
+        
+        Server.shared.packets = []
+        Server.shared.selectRequestPanelRow = 0
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: receivePacketNotification), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: selectPacketNotification), object: nil)
+        
+    }
     fileprivate func initializeTableViewStyle() {
+        
+        // 清理声音
+        let sound = NSSound(contentsOfFile: Bundle.main.path(forResource: "CleanDidFinish", ofType: "m4a")!, byReference: true)
+        garbageBtn.sound = sound
+        garbageBtn.toolTip = "清理数据"
+        
         tableView.allowsEmptySelection = false
         tableView.enclosingScrollView?.drawsBackground = false
         tableView.enclosingScrollView?.backgroundColor = NSColor.red
@@ -35,7 +53,7 @@ class RequestPanelController: NSViewController {
         tableView.gridStyleMask = [.solidVerticalGridLineMask, .solidHorizontalGridLineMask]
         tableView.allowsColumnResizing = true
         tableView.intercellSpacing = NSSize(width: 10, height: 0)
-        tableView.allowsMultipleSelection = true
+        tableView.allowsMultipleSelection = false
         tableView.usesAlternatingRowBackgroundColors = false
         tableView.allowsTypeSelect = true
         
@@ -98,23 +116,46 @@ extension RequestPanelController: NSTableViewDelegate {
         let view =  tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("cell"), owner: nil) as! RequestPanelCellView;
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.clear.cgColor
-        
         let identifier = tableColumn?.identifier.rawValue
+        
+        // size
+        let responseSize = packet.expectedContentLength
+        let bodySize = packet.body?.count
+        if (responseSize < 0 || responseSize < Int(bodySize ?? 0)) {
+            packet.expectedContentLength = Int64(bodySize ?? 0)
+        }
+        
         switch identifier {
         case TableRowIdentifier.code.rawValue:
-            view.titleLabel.stringValue = "1"
+            view.titleLabel.stringValue = String(packet.code!)
+            view.titleLabel.alignment = .center
+            view.titleLabel.textColor = ((packet.code != nil) && packet.code == 200) ? NSColor(hex: "#58D68D") : NSColor.red
         case TableRowIdentifier.method.rawValue:
             view.titleLabel.stringValue = packet.method
+            view.titleLabel.alignment = .center
+            view.titleLabel.textColor = NSColor(hex: "#E74C3C")
         case TableRowIdentifier.url.rawValue:
             view.titleLabel.stringValue = packet.url ?? ""
+            view.titleLabel.toolTip = packet.url
+            view.titleLabel.textColor = NSColor(hex: "#00ff00")
         case TableRowIdentifier.start.rawValue:
-            view.titleLabel.stringValue = "1"
+            
+            let format = DateFormatter()
+            format.dateFormat = "hh:mm:ss"
+            view.titleLabel.stringValue = format.string(from: packet.startTime!)
         case TableRowIdentifier.duration.rawValue:
-            view.titleLabel.doubleValue = packet.duration
+            view.titleLabel.stringValue = String(format: "%.0fms", packet.duration * 1000)
+            view.titleLabel.textColor = NSColor(hex: "#ff0000")
         case TableRowIdentifier.size.rawValue:
-            view.titleLabel.integerValue = packet.code ?? 0
+            view.titleLabel.stringValue = String(Int(packet.expectedContentLength)) + "Byte"
         default:
-            view.titleLabel.integerValue = packet.code ?? 0
+            if (packet.code != nil) && packet.code == 200 {
+                view.titleLabel.stringValue = "Completed"
+            } else {
+                view.titleLabel.toolTip = packet.errMsg
+                view.titleLabel.stringValue = packet.errMsg ?? "Error"
+            }
+            view.titleLabel.textColor = NSColor.cyan
         }
         
         return view
@@ -128,5 +169,9 @@ extension RequestPanelController: NSTableViewDelegate {
         // 发送通知
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: selectPacketNotification), object: server.selectRequestPacket)
     }
+    
+}
+
+extension RequestPanelController {
     
 }

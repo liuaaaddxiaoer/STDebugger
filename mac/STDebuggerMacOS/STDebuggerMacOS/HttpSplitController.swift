@@ -13,6 +13,8 @@ class HttpSplitController: NSSplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.clear.cgColor
         minimumThicknessForInlineSidebars = 100
     }
     

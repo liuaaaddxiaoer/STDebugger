@@ -22,12 +22,12 @@ class ToolPanelController: NSTabViewController {
         
         // 点击请求
         if tabViewItem?.identifier as! String == "Headers" {
-            NotificationCenter.default.post(name: NSNotification.Name(toggleRequestTabTypeNotification), object: ToggleRequestTabType.request)
+            NotificationCenter.default.post(name: NSNotification.Name(toggleToolTabTypeNotification), object: ToolPanelTabType.headers)
             // 点击响应
         } else if tabViewItem?.identifier as! String == "Query" {
-            NotificationCenter.default.post(name: NSNotification.Name(toggleRequestTabTypeNotification), object: ToggleRequestTabType.response)
+            NotificationCenter.default.post(name: NSNotification.Name(toggleToolTabTypeNotification), object: ToolPanelTabType.query)
         } else {
-            
+            NotificationCenter.default.post(name: NSNotification.Name(toggleToolTabTypeNotification), object: ToolPanelTabType.body)
         }
     }
 }

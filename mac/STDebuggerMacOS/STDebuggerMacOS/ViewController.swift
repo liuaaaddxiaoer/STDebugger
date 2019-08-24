@@ -10,28 +10,15 @@ import Cocoa
 import CocoaAsyncSocket
 class ViewController: NSViewController {
     
-    private lazy var effectView:NSVisualEffectView = {
-        let view = NSVisualEffectView()
-        
-        view.blendingMode = NSVisualEffectView.BlendingMode.withinWindow
-        view.alphaValue = 0.5
-        view.material = NSVisualEffectView.Material.popover
-        view.state = NSVisualEffectView.State.active
+ 
     
-        return view
-    }()
+    
+//    override func loadView() {
+//        self.view = UserDefaultsView()
+//    }
     
     override func viewWillAppear() {
-        let window = NSApplication.shared.windows[0]
-        window.isOpaque = false
-        window.backgroundColor = NSColor.clear
-        window.contentMinSize = NSSize(width: 1350, height: 820)
-        
-        
-        effectView.frame = window.contentView?.bounds ?? NSRect(x: 0, y: 0, width: 0, height: 0)
-        window.contentView?.addSubview(effectView, positioned: .below, relativeTo: nil)
-        window.contentView?.wantsLayer = true
-        window.contentView?.layer?.backgroundColor = NSColor.clear.cgColor
+
     }
 
     override func viewDidLoad() {
@@ -61,18 +48,13 @@ class ViewController: NSViewController {
     
     fileprivate func setupBgImage() {
         
-        let img = NSImage(named: "bg2.jpg")!
-//
-        let sourceRef = CGImageSourceCreateWithData(img.tiffRepresentation! as CFData, nil)!
-        view.layer?.opacity = 1
-        view.layer?.allowsGroupOpacity = false
-        view.layer?.contents = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil)
+       
     
     }
     
     override func viewWillLayout() {
         super.viewWillLayout()
-        effectView.frame = view.bounds
+        
     }
     
     override func mouseDown(with event: NSEvent) {

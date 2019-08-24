@@ -14,8 +14,8 @@ class HeadersController: NSViewController {
     var requestTabType = ToggleRequestTabType.response
     
     /// 工具tab类型
-    var toolTabType = ToolPanelTabType.body
-    
+    var toolTabType = ToolPanelTabType.headers
+    var isWinActive = false
 
     @IBOutlet weak var tableView: NSTableView!
     var packet: Packet?
@@ -41,6 +41,8 @@ class HeadersController: NSViewController {
         tableView.gridColor = NSColor.clear
         tableView.usesAlternatingRowBackgroundColors = false
         tableView.enclosingScrollView?.drawsBackground = false
+        tableView.headerView?.wantsLayer = true
+        tableView.headerView?.layer?.backgroundColor = NSColor.clear.cgColor
         
     }
 }
@@ -54,7 +56,9 @@ extension HeadersController {
         NotificationCenter.default.addObserver(self, selector: #selector(toggleRequestTabType), name: NSNotification.Name(rawValue: toggleRequestTabTypeNotification), object: nil)
         
         // 切换TabHeaders/Body/Query
-        NotificationCenter.default.addObserver(self, selector: #selector(toggleToolTabType), name: NSNotification.Name(rawValue: toggleRequestTabTypeNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(toggleToolTabType), name: NSNotification.Name(rawValue: toggleToolTabTypeNotification), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(windowActive), name: NSWindow.didBecomeKeyNotification, object: nil);
     }
     
     // 接收客户端数据包
@@ -65,7 +69,13 @@ extension HeadersController {
     
     // 切换请求还是响应类型
     @objc func toggleRequestTabType(obj: NSNotification) {
+        
+        if Server.shared.packets.count == 0 {
+            self.packet = nil
+        }
+        
         let type = obj.object as? ToggleRequestTabType
+
         self.requestTabType = type ?? .request
         self.tableView.reloadData()
     }
@@ -73,8 +83,16 @@ extension HeadersController {
     // 切换TabHeaders/Body/Query
     @objc func toggleToolTabType(obj: NSNotification) {
         let type = obj.object as? ToolPanelTabType
+        
+        if let body = type, body == .body {
+            return
+        }
+        
         self.toolTabType = type ?? .body
         self.tableView.reloadData()
+    }
+    @objc func windowActive(obj: NSNotification) {
+        isWinActive = true
     }
 }
 
@@ -115,13 +133,14 @@ extension HeadersController: NSTableViewDataSource {
                     }
                 } else if self.toolTabType == .body {
                 
-       
+                    return nil
                 } else {
                     // query
-                    if let keys = requestKeys {
-                        var arrKeys: [String] = Array(keys)
-                        return arrKeys[row]
-                    }
+//                    if let keys = requestKeys {
+//                        var arrKeys: [String] = Array(keys)
+//                        return arrKeys[row]
+//                    }
+                    return ""
                 }
                 
                 
@@ -135,14 +154,15 @@ extension HeadersController: NSTableViewDataSource {
                         return arrKeys[row]
                     }
                 } else if self.toolTabType == .body {
-                    
+                    return nil
                     
                 } else {
                     // query
-                    if let keys = requestKeys {
-                        var arrKeys: [String] = Array(keys)
-                        return arrKeys[row]
-                    }
+//                    if let keys = requestKeys {
+//                        var arrKeys: [String] = Array(keys)
+//                        return arrKeys[row]
+//                    }
+                    return nil
                 }
             }
             
@@ -150,17 +170,42 @@ extension HeadersController: NSTableViewDataSource {
             
             // 如果是请求tab
             if self.requestTabType == .request {
-                if let values = requestValues {
-                    var arrValues: [String] = Array(values)
-                    return arrValues[row]
+              
+                // headers
+                if self.toolTabType == .headers {
+                    if let values = requestValues {
+                        var arrValues: [String] = Array(values)
+                        return arrValues[row]
+                    }
+                } else {
+                    return nil
                 }
+                
             } else {
-                if let values = responseValues {
-                    var arrValues: [String] = Array(values)
-                    return arrValues[row]
+                // headers
+                if self.toolTabType == .headers {
+                    if let values = responseValues {
+                        var arrValues: [String] = Array(values)
+                        return arrValues[row]
+                    }
+                } else {
+                    return nil
                 }
             }
         }
         return nil
+    }
+    
+    func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+        tableColumn?.headerCell.drawsBackground = false
+        tableColumn?.headerCell.textColor = NSColor.red
+        tableColumn?.headerCell.backgroundColor = NSColor.red
+        
+    }
+    
+    func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {
+        tableColumn?.headerCell.drawsBackground = false
+        tableColumn?.headerCell.textColor = NSColor.red
+        tableColumn?.headerCell.backgroundColor = NSColor.red
     }
 }

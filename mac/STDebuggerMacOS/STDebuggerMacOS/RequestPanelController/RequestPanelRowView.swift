@@ -14,6 +14,7 @@ class RequestPanelRowView: NSTableRowView {
             let path = NSBezierPath.init(rect: dirtyRect)
             NSColor(white: 1, alpha: 0.3).setFill()
             path.fill()
+
         }
     }
 }

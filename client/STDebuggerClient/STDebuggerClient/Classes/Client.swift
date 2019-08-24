@@ -56,7 +56,7 @@ extension Client: URLSessionHookDelegate {
         let packet = getPacket(task: task)
         packet.endTime = Date()
         packet.duration = oneHookURLSessionDuration(packet: packet)
-        
+        packet.errMsg = error?.localizedDescription
         performBlock(packet: packet)
     }
     

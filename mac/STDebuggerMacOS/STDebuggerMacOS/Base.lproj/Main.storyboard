@@ -702,15 +702,15 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Window Content Vc-->
         <scene sceneID="cCH-xh-vHu">
             <objects>
-                <splitViewController id="Dh4-ch-PvP" sceneMemberID="viewController">
+                <splitViewController id="Dh4-ch-PvP" customClass="WindowContentVc" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="doN-m0-msC"/>
                         <splitViewItem id="Q9p-DB-Zcq"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="Tir-rw-u7n">
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="Tir-rw-u7n" customClass="CustomSplitView" customModule="STDebuggerMacOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>

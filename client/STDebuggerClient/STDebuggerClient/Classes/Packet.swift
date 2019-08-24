@@ -47,6 +47,7 @@ extension Packet {
         responseHeaders = dict["responseHeaders"] as? [String : String]
         code = dict["code"] as? Int
         body = (dict["body"] as? String)?.data(using: String.Encoding.utf8)
+        errMsg = dict["errMsg"] as? String 
     }
 }
 
@@ -72,6 +73,7 @@ class Packet: NSObject {
     var responseHeaders: [String: String]?
     var code: Int?
     var body: Data?
+    var errMsg: String?
     
     override init() {
         
@@ -91,6 +93,7 @@ class Packet: NSObject {
             "responseHeaders" : responseHeaders ?? ["" : ""],
             "code" : code,
             "body" : String.init(data: body ?? Data(capacity: 1), encoding: String.Encoding.utf8),
+            "errMsg": errMsg ?? ""
         ]
     }
 

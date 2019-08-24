@@ -14,7 +14,7 @@ class BodyController: NSViewController {
     /// 页面类型
     var requestTabType = ToggleRequestTabType.response
     
-    @IBOutlet weak var content: NSTextField!
+    @IBOutlet weak var content: NSTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,10 @@ class BodyController: NSViewController {
     }
     
     func setupContent() {
+        
+        if Server.shared.packets.count == 0 {
+            self.packet = nil
+        }
         
         var data = self.packet?.data
         if requestTabType == .request {
@@ -46,7 +50,15 @@ class BodyController: NSViewController {
         }
         
         
-        self.content.stringValue = jsonStr
+        self.content.isAutomaticDataDetectionEnabled = true
+//        let str = jsonStr as NSString
+//        str.replacingOccurrences(of: "\\/", with: "/")
+        self.content.isEditable = false
+        self.content.backgroundColor = NSColor(white: 1, alpha: 0.1)
+        self.content.font = NSFont.systemFont(ofSize: 15.0)
+        self.content.textColor = NSColor(hex: "#2ecc71")
+        self.content.string = jsonStr
+        self.content.isSelectable = true
     }
     
 }

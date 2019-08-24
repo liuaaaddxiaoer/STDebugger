@@ -33,6 +33,7 @@ extension NavMenuController {
         collectionView.allowsEmptySelection = false
         collectionView.backgroundColors = [NSColor.clear]
         
+        
         // 默认选择第一个
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             let item = self.collectionView.item(at: IndexPath(item: 0, section: 0))

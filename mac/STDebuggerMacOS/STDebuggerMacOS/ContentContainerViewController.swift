@@ -26,6 +26,8 @@ class ContentContainerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.clear.cgColor
         initializeNotification()
         addChildVcs()
     }

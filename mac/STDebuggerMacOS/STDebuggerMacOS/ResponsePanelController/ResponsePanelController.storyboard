@@ -35,7 +35,7 @@
         <!--请求信息-->
         <scene sceneID="UgI-oz-CaH">
             <objects>
-                <tabViewController title="请求信息" selectedTabViewItemIndex="0" tabStyle="bottom" id="bfv-Y6-fSx" customClass="ToolPanelController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController title="请求信息" selectedTabViewItemIndex="2" tabStyle="bottom" id="bfv-Y6-fSx" customClass="ToolPanelController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Headers" identifier="" id="Rjp-VV-bnG"/>
                         <tabViewItem label="Body" identifier="" id="UCa-m7-rqh"/>
@@ -58,11 +58,12 @@
                 </tabViewController>
                 <customObject id="zzT-q8-7xr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="2394"/>
+            <point key="canvasLocation" x="310.5" y="2394"/>
         </scene>
         <!--Query-->
         <scene sceneID="lj6-7G-qfS">
             <objects>
+                <customObject id="QBx-iU-DQ9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Query" id="4Dw-TQ-4Gj" customClass="HeadersController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fgk-Z6-9zE">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -74,13 +75,13 @@
                                     <rect key="frame" x="1" y="0.0" width="448" height="299"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="hHY-z5-kdb" id="1qd-II-iIE">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="TT3-hJ-3or" id="1qd-II-iIE">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="274"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" red="0.0" green="0.78488869859999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
-                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <tableColumns>
                                                 <tableColumn identifier="Key" width="118" minWidth="40" maxWidth="1000" id="3j3-Yc-icl">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Key">
@@ -124,7 +125,7 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" wantsLayer="YES" id="hHY-z5-kdb">
+                                <tableHeaderView key="headerView" id="TT3-hJ-3or">
                                     <rect key="frame" x="0.0" y="0.0" width="448" height="25"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
@@ -141,7 +142,6 @@
                         <outlet property="tableView" destination="1qd-II-iIE" id="e9M-pT-zov"/>
                     </connections>
                 </viewController>
-                <customObject id="QBx-iU-DQ9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="69" y="2898"/>
         </scene>
@@ -153,27 +153,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-r1-mLj">
-                                <rect key="frame" x="-2" y="0.0" width="454" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="TBf-e0-n8R"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="mdA-sd-jmI">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tir-rk-1tt">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="4HM-db-wkG">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2l1-dh-aBb">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" red="0.0" green="0.78488869859999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="minSize" width="450" height="300"/>
+                                            <size key="maxSize" width="450" height="10000000"/>
+                                            <attributedString key="textStorage">
+                                                <fragment content="1">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.78488869859999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="17" name="Helvetica"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <edgeInsets key="scrollerInsets" left="10" right="10" top="10" bottom="10"/>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="O2K-rd-H79">
+                                    <rect key="frame" x="424" y="10" width="16" height="280"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ePf-r1-mLj" secondAttribute="bottom" id="ND0-jO-uKu"/>
-                            <constraint firstItem="ePf-r1-mLj" firstAttribute="leading" secondItem="qVY-te-PVD" secondAttribute="leading" id="PYD-hh-wSv"/>
-                            <constraint firstAttribute="trailing" secondItem="ePf-r1-mLj" secondAttribute="trailing" id="chE-0v-JFg"/>
-                            <constraint firstItem="ePf-r1-mLj" firstAttribute="top" secondItem="qVY-te-PVD" secondAttribute="top" id="zuM-I2-67x"/>
+                            <constraint firstItem="Tir-rk-1tt" firstAttribute="top" secondItem="qVY-te-PVD" secondAttribute="top" id="9yd-bE-4vf"/>
+                            <constraint firstAttribute="bottom" secondItem="Tir-rk-1tt" secondAttribute="bottom" id="H3g-5Q-e7k"/>
+                            <constraint firstAttribute="trailing" secondItem="Tir-rk-1tt" secondAttribute="trailing" id="cha-Ab-UvA"/>
+                            <constraint firstItem="Tir-rk-1tt" firstAttribute="leading" secondItem="qVY-te-PVD" secondAttribute="leading" id="w5W-F9-ioW"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="content" destination="ePf-r1-mLj" id="ZfE-iw-or3"/>
+                        <outlet property="content" destination="2l1-dh-aBb" id="3qF-ad-mGq"/>
                     </connections>
                 </viewController>
                 <customObject id="iUw-j0-ZxY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

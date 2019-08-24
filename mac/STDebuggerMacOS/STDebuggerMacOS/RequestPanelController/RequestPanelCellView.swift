@@ -11,4 +11,8 @@ import Cocoa
 class RequestPanelCellView: NSTableCellView {
     @IBOutlet weak var titleLabel: NSTextField!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel.alignment = NSTextAlignment.left
+    }
 }
