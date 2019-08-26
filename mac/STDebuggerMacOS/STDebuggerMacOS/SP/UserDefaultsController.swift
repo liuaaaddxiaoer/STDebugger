@@ -44,6 +44,8 @@ class UserDefaultsController: NSViewController {
                     // 文件发生变化
                     let plistPath = $0[0]
                     
+                    Server.shared.notificationManager.deliver(message: "偏好设置被更改了")
+                    
                     let dic = NSDictionary(contentsOfFile: plistPath)
                     if dic == nil {return}
                     let data = try? JSONSerialization.data(withJSONObject: dic!, options: JSONSerialization.WritingOptions.prettyPrinted)

@@ -49,6 +49,10 @@ class Browser : NSObject {
         }
     }
     
+    func reload() {
+        
+    }
+    
     deinit {
         
     }
@@ -56,11 +60,11 @@ class Browser : NSObject {
 
 extension Browser: GCDAsyncSocketDelegate {
     
-    func socket(_ sock: GCDAsyncSocket, didConnectTo url: URL) {
+     func socket(_ sock: GCDAsyncSocket, didConnectTo url: URL) {
         
     }
     
-    func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         
         // 发送app信息
         let info = ApplicationInformation()
@@ -77,12 +81,12 @@ extension Browser: GCDAsyncSocketDelegate {
         self.socketClient?.readData(withTimeout: -1, tag: 0);
         
     }
-    func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+    private func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         
-        
+//        Client.shared().browser.inject()
     }
     
-    func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+    private func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         
         let dict = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
         if (dict != nil) {
@@ -134,7 +138,14 @@ extension Browser: NetServiceBrowserDelegate {
     
     
     public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        
+//        self.socketClient?.disconnect()
+//        self.socketClient?.delegate = nil
+//        self.socketClient = nil
+//        self.browser?.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
+//        self.browser?.stop()
+//        self.browser?.delegate = nil
+//        self.browser = nil
+//        self.inject()
         self.services = self.services.filter{$0 !== service}
     }
 }
@@ -143,17 +154,18 @@ extension Browser: NetServiceDelegate {
     
     
     public func netServiceWillResolve(_ sender: NetService) {
-        
+        // 拿到远程服务器ip地址建立socket连接
+        self.socketClient?.disconnect()
     }
     
     
     public func netServiceDidResolveAddress(_ sender: NetService) {
         
-        // 拿到远程服务器ip地址建立socket连接
+        
         if let address = sender.addresses?[0] {
             do {
                 try self.socketClient?.connect(toAddress: address)
-                
+                self.socketClient?.readData(withTimeout: -1, tag: 0)
             } catch let err {
                 print(err)
             }

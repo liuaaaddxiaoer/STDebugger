@@ -25,16 +25,16 @@ class ViewController: UIViewController {
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
         
         
-        UserDefaults.standard.register(defaults: ["name2": "hahasdads"])
+        UserDefaults.standard.set("hahasads", forKey: "name2")
         
         UserDefaults.standard.synchronize()
         
-        return
+//        return
         
         
-        UserDefaults.resetStandardUserDefaults()
-        UserDefaults.standard.set(true, forKey: "test")
-        UserDefaults.standard.synchronize()
+//        UserDefaults.resetStandardUserDefaults()
+//        UserDefaults.standard.set(true, forKey: "test")
+//        UserDefaults.standard.synchronize()
         
         print("key is" + (UserDefaults.standard.string(forKey: "name") ?? "1"))
         

@@ -34,6 +34,9 @@ class FileMonitorManager: NSObject {
         queue.async {
             if self.streamRef != nil {
                 FSEventStreamStop(self.streamRef!)
+                FSEventStreamInvalidate(self.streamRef!)
+                self.streamRef = nil
+
             }
             let flags = FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagUseCFTypes )
             var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)

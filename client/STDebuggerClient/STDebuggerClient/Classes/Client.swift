@@ -12,7 +12,7 @@ import Foundation
     
     private var browser = Browser()
     private var sessionHook = URLSessionHook()
-    private var packets: [Packet] = []
+    public var packets: [Packet] = []
     private var queue = DispatchQueue.init(label: "www.liuxiaoer.club")
     
     @objc public static let client = Client()
@@ -66,7 +66,7 @@ extension Client: URLSessionHookDelegate {
         return end.timeIntervalSince(begin)
     }
     
-    func performBlock(packet: Packet) {
+    public func performBlock(packet: Packet) {
         queue.async {
             self.browser.sendPacket(packet: packet)
             self.packets = self.packets.filter{ $0 !== packet }

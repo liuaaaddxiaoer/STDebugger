@@ -51,7 +51,7 @@ extension Packet {
     }
 }
 
-class Packet: NSObject {
+public class Packet: NSObject {
     
     var startTime: Date?
     var endTime: Date?
