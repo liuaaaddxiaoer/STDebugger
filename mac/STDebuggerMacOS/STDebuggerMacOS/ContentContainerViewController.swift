@@ -19,6 +19,7 @@ class ContentContainerViewController: NSViewController {
     lazy var sp : UserDefaultsController = {
         let sharedSp = UserDefaultsController()
         sharedSp.view.frame = view.bounds
+        sharedSp.view.layer?.backgroundColor = NSColor.cyan.cgColor
         sharedSp.view.autoresizingMask = [.width, .height]
         return sharedSp
     }()
@@ -46,6 +47,7 @@ class ContentContainerViewController: NSViewController {
         addChild(sp)
         
     }
+    
 }
 
 extension ContentContainerViewController {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ObjectiveC.runtime
 class ViewController: UIViewController {
     
     var task: URLSessionDataTask?
@@ -15,10 +15,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         Client.shared().inject()
+        
+        print(ApplicationInformation().documentsPath)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        
+        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
+        
+        
+        UserDefaults.standard.register(defaults: ["name2": "hahasdads"])
+        
+        UserDefaults.standard.synchronize()
+        
+        return
+        
+        
+        UserDefaults.resetStandardUserDefaults()
+        UserDefaults.standard.set(true, forKey: "test")
+        UserDefaults.standard.synchronize()
+        
+        print("key is" + (UserDefaults.standard.string(forKey: "name") ?? "1"))
         
         
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.current)
@@ -27,6 +45,9 @@ class ViewController: UIViewController {
         task.resume()
 
         self.task = task
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

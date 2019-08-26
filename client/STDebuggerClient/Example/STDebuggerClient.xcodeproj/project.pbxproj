@@ -17,6 +17,7 @@
 		D0DEFD22230814DD007C96D8 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD21230814DD007C96D8 /* Client.swift */; };
 		D0DEFD24230815D9007C96D8 /* NetworkBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD23230815D9007C96D8 /* NetworkBrowser.swift */; };
 		E37A13DF23084AEC001AAA5B /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A13DE23084AEC001AAA5B /* Packet.swift */; };
+		E3D573B323125E2100A10AEC /* ApplicationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D573B223125E2100A10AEC /* ApplicationInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		D0DEFD23230815D9007C96D8 /* NetworkBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBrowser.swift; sourceTree = "<group>"; };
 		D7DEF99F41C657CDB528C994 /* Pods_STDebuggerClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STDebuggerClient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37A13DE23084AEC001AAA5B /* Packet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
+		E3D573B223125E2100A10AEC /* ApplicationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				D0DEFD21230814DD007C96D8 /* Client.swift */,
 				D0DEFD23230815D9007C96D8 /* NetworkBrowser.swift */,
 				E37A13DE23084AEC001AAA5B /* Packet.swift */,
+				E3D573B223125E2100A10AEC /* ApplicationInformation.swift */,
 			);
 			name = Classes;
 			path = ../../STDebuggerClient/Classes;
@@ -255,6 +258,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				D0DEFD24230815D9007C96D8 /* NetworkBrowser.swift in Sources */,
 				E37A13DF23084AEC001AAA5B /* Packet.swift in Sources */,
+				E3D573B323125E2100A10AEC /* ApplicationInformation.swift in Sources */,
 				D0DEFD22230814DD007C96D8 /* Client.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

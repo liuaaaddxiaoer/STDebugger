@@ -25,7 +25,7 @@ class WindowContentVc: NSSplitViewController {
         let sourceRef = CGImageSourceCreateWithData(img.tiffRepresentation! as CFData, nil)!
         view.layer?.opacity = 1
         view.layer?.allowsGroupOpacity = false
-        view.layer?.contents = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil)
+//        view.layer?.contents = CGImageSourceCreateImageAtIndex(sourceRef, 0, nil)
     }
     
 }

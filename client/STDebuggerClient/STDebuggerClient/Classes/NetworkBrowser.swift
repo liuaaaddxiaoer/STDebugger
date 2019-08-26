@@ -62,13 +62,38 @@ extension Browser: GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         
+        // 发送app信息
+        let info = ApplicationInformation()
+        info.documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
+        info.userPlistPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
+            + "/Preferences/" + (Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String) + ".plist"
+        
+        
+        
+        
+       let data =  try?  JSONSerialization.data(withJSONObject: info.toJson(), options: JSONSerialization.WritingOptions.prettyPrinted)
+        if data == nil {return}
+        self.socketClient?.write(data!, withTimeout: -1, tag: 2)
+        self.socketClient?.readData(withTimeout: -1, tag: 0);
+        
     }
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         
         
     }
-//    func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-//    }
+    
+    func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+        
+        let dict = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
+        if (dict != nil) {
+            for (key, value) in dict! {
+                UserDefaults.standard.set(value, forKey: key)
+            }
+        }
+        
+        
+        self.socketClient?.readData(withTimeout: -1, tag: 0);
+    }
 }
 
 

@@ -17,6 +17,5 @@ class HttpSplitController: NSSplitViewController {
         view.layer?.backgroundColor = NSColor.clear.cgColor
         minimumThicknessForInlineSidebars = 100
     }
-    
-    
+        
 }

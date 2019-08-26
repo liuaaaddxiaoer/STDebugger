@@ -24,12 +24,26 @@ class RequestPanelController: NSViewController {
     
     // 清理包
     @IBAction func cleanPackets(_ sender: NSButton) {
-        
+//
         Server.shared.packets = []
         Server.shared.selectRequestPanelRow = 0
         
         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: receivePacketNotification), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: selectPacketNotification), object: nil)
+        
+        
+        let notification = NSUserNotification()
+        notification.title = ""
+        notification.subtitle = "清理数据成功"
+        notification.deliveryDate = Date(timeIntervalSinceNow: 0)
+        notification.hasActionButton = true
+        notification.additionalActions = [NSUserNotificationAction(identifier: "a1", title: "确定")]
+        
+        
+        let notificationCenter = NSUserNotificationCenter.default
+        notificationCenter.delegate = self
+        notificationCenter.scheduleNotification(notification)
+        
         
     }
     fileprivate func initializeTableViewStyle() {
@@ -63,6 +77,13 @@ class RequestPanelController: NSViewController {
         tableView.register(NSNib(nibNamed: "RequestPanelCellView", bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier.init("cell"))
         tableView.cornerView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("cell"), owner: nil);
         
+    }
+}
+
+
+extension RequestPanelController: NSUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
     }
 }
 

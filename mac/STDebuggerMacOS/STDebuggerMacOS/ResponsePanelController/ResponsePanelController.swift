@@ -26,4 +26,5 @@ class ResponsePanelController: NSTabViewController {
             NotificationCenter.default.post(name: NSNotification.Name(toggleRequestTabTypeNotification), object: ToggleRequestTabType.response)
         }
     }
+    
 }
