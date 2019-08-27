@@ -138,14 +138,7 @@ extension Browser: NetServiceBrowserDelegate {
     
     
     public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-//        self.socketClient?.disconnect()
-//        self.socketClient?.delegate = nil
-//        self.socketClient = nil
-//        self.browser?.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
-//        self.browser?.stop()
-//        self.browser?.delegate = nil
-//        self.browser = nil
-//        self.inject()
+
         self.services = self.services.filter{$0 !== service}
     }
 }
