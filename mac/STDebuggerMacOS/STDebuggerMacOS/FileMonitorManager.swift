@@ -13,8 +13,8 @@ typealias FileChangesBack = (_ callBack: [String]) -> ()
 class FileMonitorManager: NSObject {
     
     static let `default`: FileMonitorManager = FileMonitorManager()
-    
-    var queue = DispatchQueue(label: "com.xiaoer.file_monitor")
+    //
+    var queue = DispatchQueue.main
     
     var streamRef: FSEventStreamRef?
     
@@ -30,19 +30,20 @@ class FileMonitorManager: NSObject {
     
     func startMonitor(paths: [String]) -> FileMonitorManager {
         
+        if self.streamRef != nil {
+            FSEventStreamStop(self.streamRef!)
+            FSEventStreamInvalidate(self.streamRef!)
+            self.streamRef = nil
+            
+        }
         
         queue.async {
-            if self.streamRef != nil {
-                FSEventStreamStop(self.streamRef!)
-                FSEventStreamInvalidate(self.streamRef!)
-                self.streamRef = nil
-
-            }
+           
             let flags = FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagUseCFTypes )
             var context = FSEventStreamContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
             context.info = Unmanaged.passUnretained(self).toOpaque()
             
-            let streamRef = FSEventStreamCreate(nil, self.eventCallBack, &context, paths as CFArray, FSEventStreamEventId(kFSEventStreamEventIdSinceNow), 2, flags)
+            let streamRef = FSEventStreamCreate(nil, self.eventCallBack, &context, paths as CFArray, FSEventStreamEventId(kFSEventStreamEventIdSinceNow), 1, flags)
             FSEventStreamScheduleWithRunLoop(streamRef!, CFRunLoopGetCurrent(), CFRunLoopMode.commonModes.rawValue)
             FSEventStreamStart(streamRef!)
             self.streamRef = streamRef

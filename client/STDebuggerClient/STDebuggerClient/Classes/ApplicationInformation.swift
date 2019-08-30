@@ -14,7 +14,8 @@ class ApplicationInformation: NSObject {
     
     func toJson() -> Dictionary<String, Any> {
         return [
-            "documentsPath": documentsPath
+            "documentsPath": documentsPath,
+            "userPlistPath": userPlistPath
         ]
     }
     
@@ -24,5 +25,6 @@ extension ApplicationInformation {
     public convenience init(dict: [String : Any]) {
         self.init()
         documentsPath = (dict["documentsPath"] as? String) ?? ""
+        userPlistPath = (dict["userPlistPath"] as? String) ?? ""
     }
 }

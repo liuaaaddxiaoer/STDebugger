@@ -22,39 +22,50 @@ class UserDefaultsController: NSViewController {
         initizalizeNotification()
     }
     
+    /// 更改偏好设置
+    @IBAction func changeUserDefaults(_ sender: NSButton) {
+        let path = Server.shared.applicationInfo.userPlistPath
+        if path.count == 0 {return}
+        
+        let panel = NSOpenPanel()
+        let index =  path.lastIndex(of: "/")
+        let subPath =  String(path[path.startIndex ..< index!])
+        panel.directoryURL = URL(fileURLWithPath: subPath, isDirectory: true)
+        panel.title = "请打开正确的偏好设置文件"
+        panel.beginSheetModal(for: view.window!) { (res) in
+            
+            guard let realpath = panel.url?.path, realpath.hasSuffix("plist")  else {
+                let alert = NSAlert()
+                alert.messageText = "请打开正确的偏好设置文件"
+                alert.runModal()
+                return
+            }
+            
+            NSWorkspace.shared.openFile(realpath, withApplication: "Xcode")
+            
+            self.fileMonitor(path: realpath)
+        }
+        
+//        print(result)
+    }
+    
     @IBAction func click(_ sender: Any) {
         
-        print(self.tf.stringValue)
         // 打开偏好设置
         
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
         panel.canSelectHiddenExtension = false
-        panel.canCreateDirectories = true
+        panel.canCreateDirectories = false
         panel.isExtensionHidden = false
         panel.directoryURL = URL(fileURLWithPath: self.tf.stringValue, isDirectory: true)
         panel.beginSheetModal(for: view.window!) { (res) in
             if res.rawValue == 1 {
                 
-            NSWorkspace.shared.openFile(panel.url!.absoluteString, withApplication: "Xcode")
+            NSWorkspace.shared.openFile(panel.url!.absoluteString, withApplication: "Finder")
                 print(panel.url!.path)
-                FileMonitorManager.default.startMonitor(paths: [panel.url!.path]).callBack = {
-                    print($0)
-                    // 文件发生变化
-                    let plistPath = $0[0]
-                    
-                    Server.shared.notificationManager.deliver(message: "偏好设置被更改了")
-                    
-                    let dic = NSDictionary(contentsOfFile: plistPath)
-                    if dic == nil {return}
-                    let data = try? JSONSerialization.data(withJSONObject: dic!, options: JSONSerialization.WritingOptions.prettyPrinted)
-                    if data == nil {return}
-                    // 发送数据给客户端让客户端完成偏好设置的更新
-                    for sock in Server.shared.clientSockets {
-                        sock.write(data!, withTimeout: -1, tag: 0)
-                    }
-                }
+                
             }
         }
     }
@@ -73,5 +84,28 @@ extension UserDefaultsController {
     
     @objc func receivePacket(obj: Notification) {
         self.tf.stringValue = Server.shared.applicationInfo.documentsPath
+    }
+}
+
+
+extension UserDefaultsController {
+    func fileMonitor(path: String) {
+        FileMonitorManager.default.startMonitor(paths: [path]).callBack = {
+            print($0)
+            // 文件发生变化
+            let plistPath = $0[0]
+            
+            Server.shared.notificationManager.deliver(message: "偏好设置被更改了")
+            
+            let dic = NSDictionary(contentsOfFile: plistPath)
+            if dic == nil {return}
+            let data = try? JSONSerialization.data(withJSONObject: dic!, options: JSONSerialization.WritingOptions.prettyPrinted)
+            if data == nil {return}
+            // 发送数据给客户端让客户端完成偏好设置的更新
+//            for sock in Server.shared.clientSockets {
+//                sock.write(data!, withTimeout: -1, tag: 110)
+//            }
+            Server.shared.serverSocket?.write(data!, withTimeout: -1, tag: 0)
+        }
     }
 }

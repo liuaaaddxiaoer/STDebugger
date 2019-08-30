@@ -10,7 +10,7 @@ import Foundation
 
 @objc open class Client : NSObject {
     
-    private var browser = Browser()
+    public var browser = Browser()
     private var sessionHook = URLSessionHook()
     public var packets: [Packet] = []
     private var queue = DispatchQueue.init(label: "www.liuxiaoer.club")

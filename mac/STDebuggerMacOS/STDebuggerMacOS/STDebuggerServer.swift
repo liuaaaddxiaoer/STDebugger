@@ -51,11 +51,11 @@ class Server: NSObject {
             service.publish()
             self.service = service
             
-            self.serverSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.global())
+            self.serverSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
             do {
                 
                 try self.serverSocket?.accept(onPort: UInt16(ServerConfig.port))
-                self.serverSocket?.readData(withTimeout: -1, tag: 1)
+                
             
             }catch _ {
                 print("连接失败")
@@ -68,22 +68,24 @@ extension Server: GCDAsyncSocketDelegate {
     func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
         
         notificationManager.deliver(message: "新的客户端连接")
+        newSocket.readData(withTimeout: -1, tag: 1)
         
-        newSocket.readData(withTimeout: -1, tag: 200)
+        newSocket.delegate = self
         
         
         guard self.clientSockets.contains(newSocket) else {
             self.clientSockets.append(newSocket)
+            
             return
         }
     }
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        sock.readData(withTimeout: -1, tag: tag)
+        
         
         notificationManager.deliver(message: "接收到新的请求")
         
-        if tag == 200 {
+        
             let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             if dict == nil {return};
             
@@ -103,7 +105,11 @@ extension Server: GCDAsyncSocketDelegate {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: receivePacketNotification), object: nil)
                 }
             }
-        }
+        
+        
+        
+        
+        sock.readData(withTimeout: -1, tag: tag)
     }
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
@@ -112,7 +118,12 @@ extension Server: GCDAsyncSocketDelegate {
         self.clientSockets = self.clientSockets.filter{ $0 !== sock}
         objc_sync_exit(self)
     }
+    
+    func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+        
+    }
 }
+
 
 
 extension Server: NetServiceDelegate {

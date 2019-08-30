@@ -47,6 +47,18 @@ class ViewController: UIViewController {
         self.task = task
         
         
+        // 发送app信息
+        let info = ApplicationInformation()
+        info.documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
+        info.userPlistPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
+            + "/Preferences/" + (Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String) + ".plist"
+        
+        
+        
+        
+        let data =  try?  JSONSerialization.data(withJSONObject: info.toJson(), options: JSONSerialization.WritingOptions.prettyPrinted)
+        if data == nil {return}
+        Client.shared().browser.socketClient?.write(data!, withTimeout: -1, tag: 0)
         
     }
 

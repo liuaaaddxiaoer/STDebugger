@@ -26,20 +26,33 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-fg-4gL">
-                    <rect key="frame" x="114" y="153" width="81" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P7G-tN-otU">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-fg-4gL">
+                    <rect key="frame" x="172" y="153" width="137" height="32"/>
+                    <buttonCell key="cell" type="push" title="打开Documents" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P7G-tN-otU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" usesAppearanceFont="YES"/>
                     </buttonCell>
                     <connections>
                         <action selector="click:" target="-2" id="cj9-uy-ged"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ULD-xV-tyL">
+                    <rect key="frame" x="164" y="201" width="153" height="32"/>
+                    <buttonCell key="cell" type="push" title="查看/更改偏好设置" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2U9-Pu-bM5">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" usesAppearanceFont="YES"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeUserDefaults:" target="-2" id="zyt-eT-uw0"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="zut-L5-RN9" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="B4w-bh-KKM"/>
+                <constraint firstItem="ULD-xV-tyL" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="43" id="Eun-5Z-oMl"/>
+                <constraint firstItem="ULD-xV-tyL" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="LHH-Dj-vsd"/>
+                <constraint firstItem="SCH-fg-4gL" firstAttribute="top" secondItem="ULD-xV-tyL" secondAttribute="bottom" constant="27" id="YN4-6L-RSs"/>
+                <constraint firstItem="SCH-fg-4gL" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="f1F-Zd-cLt"/>
                 <constraint firstItem="zut-L5-RN9" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="yGD-uS-KxT"/>
             </constraints>
         </customView>

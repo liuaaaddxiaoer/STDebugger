@@ -9,7 +9,7 @@
 import Foundation
 import CocoaAsyncSocket
 
-class Browser : NSObject {
+open class Browser : NSObject {
     
     var browser : NetServiceBrowser?
     var services: [NetService] = []
@@ -26,7 +26,8 @@ class Browser : NSObject {
             let arData = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
             
             // 发送
-            self.socketClient?.write(arData, withTimeout: -1, tag: 1)
+            self.socketClient?.write(arData, withTimeout: -1, tag: 0)
+//            self.socketClient?.readData(withTimeout: -1, tag: 1)
             
         } catch let err {
             print(err)
@@ -44,9 +45,12 @@ class Browser : NSObject {
             self.browser = browser
         }
         
-        DispatchQueue.global(qos: .background).async {
-            self.socketClient = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.global(qos: .background))
-        }
+//        DispatchQueue.global(qos: .background).async {
+//
+//
+//        }
+        self.socketClient = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
+//        self.socketClient?.readData(withTimeout: -1, tag: 110)
     }
     
     func reload() {
@@ -60,25 +64,20 @@ class Browser : NSObject {
 
 extension Browser: GCDAsyncSocketDelegate {
     
-     func socket(_ sock: GCDAsyncSocket, didConnectTo url: URL) {
+     public func socket(_ sock: GCDAsyncSocket, didConnectTo url: URL) {
         
     }
     
-     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+    public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
+        sock.readData(withTimeout: -1, tag: 0)
+    }
+    
+    public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+        sock.readData(withTimeout: -1, tag: 1)
+
+//        sock.readData(withTimeout: -1, tag: 110)
         
-        // 发送app信息
-        let info = ApplicationInformation()
-        info.documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
-        info.userPlistPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
-            + "/Preferences/" + (Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String) + ".plist"
-        
-        
-        
-        
-       let data =  try?  JSONSerialization.data(withJSONObject: info.toJson(), options: JSONSerialization.WritingOptions.prettyPrinted)
-        if data == nil {return}
-        self.socketClient?.write(data!, withTimeout: -1, tag: 2)
-        self.socketClient?.readData(withTimeout: -1, tag: 0);
+    
         
     }
     private func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
@@ -86,6 +85,7 @@ extension Browser: GCDAsyncSocketDelegate {
 //        Client.shared().browser.inject()
     }
     
+//
     private func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         
         let dict = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
@@ -96,8 +96,10 @@ extension Browser: GCDAsyncSocketDelegate {
         }
         
         
-        self.socketClient?.readData(withTimeout: -1, tag: 0);
+//        sock.readData(withTimeout: -1, tag: 110);
     }
+    
+    
 }
 
 
@@ -148,7 +150,7 @@ extension Browser: NetServiceDelegate {
     
     public func netServiceWillResolve(_ sender: NetService) {
         // 拿到远程服务器ip地址建立socket连接
-        self.socketClient?.disconnect()
+//        self.socketClient?.disconnect()
     }
     
     
@@ -158,7 +160,7 @@ extension Browser: NetServiceDelegate {
         if let address = sender.addresses?[0] {
             do {
                 try self.socketClient?.connect(toAddress: address)
-                self.socketClient?.readData(withTimeout: -1, tag: 0)
+//                self.socketClient?.readData(withTimeout: -1, tag: 2)
             } catch let err {
                 print(err)
             }
