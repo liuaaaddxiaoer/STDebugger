@@ -13,11 +13,14 @@ class UserDefaultsController: NSViewController {
   
     @IBOutlet weak var tf: NSTextField!
     
+    override func mouseDown(with event: NSEvent) {
+        print("mouseDown")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.\
         view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.red.cgColor
+//        view.layer?.backgroundColor = NSColor.red.cgColor
         self.tf.stringValue = Server.shared.applicationInfo.documentsPath
         initizalizeNotification()
     }
@@ -102,10 +105,10 @@ extension UserDefaultsController {
             let data = try? JSONSerialization.data(withJSONObject: dic!, options: JSONSerialization.WritingOptions.prettyPrinted)
             if data == nil {return}
             // 发送数据给客户端让客户端完成偏好设置的更新
-//            for sock in Server.shared.clientSockets {
-//                sock.write(data!, withTimeout: -1, tag: 110)
-//            }
-            Server.shared.serverSocket?.write(data!, withTimeout: -1, tag: 0)
+            for sock in Server.shared.clientSockets {
+                sock.write(data!, withTimeout: -1, tag: 1)
+            }
+//            Server.shared.serverSocket?.write(data!, withTimeout: -1, tag: 0)
         }
     }
 }

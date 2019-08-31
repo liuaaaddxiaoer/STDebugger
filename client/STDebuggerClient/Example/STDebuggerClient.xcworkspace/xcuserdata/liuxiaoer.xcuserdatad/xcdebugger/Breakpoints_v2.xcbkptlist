@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.941735"
+            timestampString = "588945536.031566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.94235"
+            timestampString = "588945536.031938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.943041"
+            timestampString = "588945536.032303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -122,23 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.943462"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "socket(_:didRead:withTag:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.943875"
+            timestampString = "588945536.032768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -154,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.9442689"
+            timestampString = "588945536.0329961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
@@ -170,7 +154,7 @@
                   moduleName = "STDebuggerClient_Example"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/liuxiaoer/Desktop/STDebugger/client/STDebuggerClient/STDebuggerClient/Classes/NetworkBrowser.swift"
-                  timestampString = "588869269.088004"
+                  timestampString = "588945536.184649"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "174"
@@ -185,7 +169,7 @@
                   moduleName = "STDebuggerClient_Example"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/liuxiaoer/Desktop/STDebugger/client/STDebuggerClient/STDebuggerClient/Classes/NetworkBrowser.swift"
-                  timestampString = "588869269.090676"
+                  timestampString = "588945536.187667"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "174"
@@ -202,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.944659"
+            timestampString = "588945536.033223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -218,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.945055"
+            timestampString = "588945536.033447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -234,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.945453"
+            timestampString = "588945536.033671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -250,23 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.9458441"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "socket(_:didRead:withTag:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.946189"
+            timestampString = "588945536.034129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -282,12 +250,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../STDebuggerClient/Classes/NetworkBrowser.swift"
-            timestampString = "588869268.94644"
+            timestampString = "588945536.034371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "netServiceBrowserWillSearch(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STDebuggerClient/ViewController.swift"
+            timestampString = "588945586.134868"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STDebuggerClient/ViewController.swift"
+            timestampString = "588945734.432763"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "touchesBegan(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -11,15 +11,44 @@ import Cocoa
 class UserDefaultsView: NSView {
     
     
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
+//    override init(frame frameRect: NSRect) {
+//        super.init(frame: frameRect)
+//        
+//    }
+    var area: NSTrackingArea?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
+        print("awake")
+        
+      
     }
     
-    required init?(coder decoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func updateTrackingAreas() {
+        
+        for area in self.trackingAreas {
+            removeTrackingArea(area)
+        }
+        
+        area = NSTrackingArea(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited,.activeAlways], owner: self, userInfo: nil)
+        addTrackingArea(area!)
     }
     
+
+    
+//    required init?(coder decoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        print("mouseEntered")
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        print("mouseExited")
+    }
+        
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -33,5 +62,23 @@ class UserDefaultsView: NSView {
         
     }
     
+//    override func mouseDown(with event: NSEvent) {
+//        
+//    }
+//    
+    
+    @IBAction func click(_ sender: Any) {
+        
+        print(window ?? 1)
+        window?.close()
+        let windows = NSApp.windows[0]
+        windows.makeKeyAndOrderFront(sender)
+                
+        
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        return false
+    }
     
 }

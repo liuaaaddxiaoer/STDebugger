@@ -68,13 +68,12 @@ extension Server: GCDAsyncSocketDelegate {
     func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
         
         notificationManager.deliver(message: "新的客户端连接")
-        newSocket.readData(withTimeout: -1, tag: 1)
         
-        newSocket.delegate = self
         
         
         guard self.clientSockets.contains(newSocket) else {
             self.clientSockets.append(newSocket)
+            newSocket.readData(withTimeout: -1, tag: 1)
             
             return
         }

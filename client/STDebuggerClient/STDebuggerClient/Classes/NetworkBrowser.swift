@@ -69,7 +69,7 @@ extension Browser: GCDAsyncSocketDelegate {
     }
     
     public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        sock.readData(withTimeout: -1, tag: 0)
+        sock.readData(withTimeout: -1, tag: 1)
     }
     
     public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
@@ -86,7 +86,7 @@ extension Browser: GCDAsyncSocketDelegate {
     }
     
 //
-    private func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+    public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         
         let dict = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
         if (dict != nil) {
@@ -150,7 +150,7 @@ extension Browser: NetServiceDelegate {
     
     public func netServiceWillResolve(_ sender: NetService) {
         // 拿到远程服务器ip地址建立socket连接
-//        self.socketClient?.disconnect()
+        self.socketClient?.disconnect()
     }
     
     
