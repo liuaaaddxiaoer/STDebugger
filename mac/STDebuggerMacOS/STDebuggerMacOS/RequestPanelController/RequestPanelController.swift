@@ -10,6 +10,8 @@ import Cocoa
 
 class RequestPanelController: NSViewController {
 
+    var themeWindow: ThemeController?
+    
     @IBOutlet weak var tableView: NSTableView!
     
     @IBOutlet weak var garbageBtn: NSButton!
@@ -20,6 +22,19 @@ class RequestPanelController: NSViewController {
         
         // 通知
         initializeNotification()
+    }
+    
+    // 换肤
+    
+    @IBAction func changeThemeClick(_ sender: Any) {
+        
+        var arr: NSArray?
+        
+        
+        Bundle.main.loadNibNamed("Window2", owner: nil, topLevelObjects: &arr)
+        
+        NSApp.runModal(for: (arr![0] as AnyObject).isKind(of: NSWindow.self) ? (arr![0] as! Window2) : arr![1] as! Window2)
+        
     }
     
     // 清理包

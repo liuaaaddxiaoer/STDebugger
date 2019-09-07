@@ -9,7 +9,7 @@
         <!--Response Panel Controller-->
         <scene sceneID="ww0-jm-Ckg">
             <objects>
-                <tabViewController selectedTabViewItemIndex="1" tabStyle="unspecified" id="dCy-BP-zed" customClass="ResponsePanelController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="dCy-BP-zed" customClass="ResponsePanelController" customModule="STDebuggerMacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="请求信息" identifier="request" id="FPY-pC-tiA"/>
                         <tabViewItem label="响应信息" identifier="response" id="0tf-oi-QhL"/>
@@ -185,6 +185,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIa-4B-9r4" customClass="ThemeDragView" customModule="STDebuggerMacOS" customModuleProvider="target">
+                                <rect key="frame" x="83" y="45" width="305" height="218"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Tir-rk-1tt" firstAttribute="top" secondItem="qVY-te-PVD" secondAttribute="top" id="9yd-bE-4vf"/>

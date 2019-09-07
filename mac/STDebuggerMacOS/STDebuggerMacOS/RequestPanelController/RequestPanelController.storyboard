@@ -31,10 +31,22 @@
                                             <action selector="cleanPackets:" target="RjC-fi-yF5" id="dUd-zi-Qxt"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fAd-pn-Dnn">
+                                        <rect key="frame" x="322" y="13" width="67" height="32"/>
+                                        <buttonCell key="cell" type="push" title="换肤" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C8Y-VR-bKG">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="changeThemeClick:" target="RjC-fi-yF5" id="Mlj-oW-xl7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="fAd-pn-Dnn" firstAttribute="centerY" secondItem="zdX-TV-VfB" secondAttribute="centerY" id="19w-1z-2De"/>
                                     <constraint firstAttribute="height" constant="60" id="32P-9Z-3MJ"/>
                                     <constraint firstItem="zRd-UO-BNn" firstAttribute="centerY" secondItem="zdX-TV-VfB" secondAttribute="centerY" id="CBw-0T-o2M"/>
+                                    <constraint firstItem="zRd-UO-BNn" firstAttribute="leading" secondItem="fAd-pn-Dnn" secondAttribute="trailing" constant="12" id="TUn-2M-pSD"/>
                                     <constraint firstAttribute="trailing" secondItem="zRd-UO-BNn" secondAttribute="trailing" constant="25" id="kIJ-U1-agQ"/>
                                 </constraints>
                             </customView>

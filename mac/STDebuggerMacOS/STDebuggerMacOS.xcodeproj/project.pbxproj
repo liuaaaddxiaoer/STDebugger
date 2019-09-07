@@ -25,6 +25,10 @@
 		D0DEFD2023080AA8007C96D8 /* STDebuggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DEFD1F23080AA8007C96D8 /* STDebuggerConfig.swift */; };
 		E32188EF230C17AA008593FF /* CustomSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32188EE230C17AA008593FF /* CustomSplitView.swift */; };
 		E37A13E123086FF6001AAA5B /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A13E023086FF6001AAA5B /* Packet.swift */; };
+		E388F27B231BFF9C00EFB338 /* ThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388F279231BFF9C00EFB338 /* ThemeController.swift */; };
+		E388F27E231C14CB00EFB338 /* ThemeDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388F27D231C14CB00EFB338 /* ThemeDragView.swift */; };
+		E388F28423212E4D00EFB338 /* Window2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E388F28323212E4D00EFB338 /* Window2.xib */; };
+		E388F28623212E6A00EFB338 /* Window2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388F28523212E6A00EFB338 /* Window2.swift */; };
 		E3AEFDC7230D7011006BB115 /* ContentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AEFDC6230D7011006BB115 /* ContentContainerViewController.swift */; };
 		E3AEFDC9230D758B006BB115 /* HttpClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3AEFDC8230D758B006BB115 /* HttpClient.storyboard */; };
 		E3AEFDCD230D78FD006BB115 /* UserDefaultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AEFDCB230D78FD006BB115 /* UserDefaultsController.swift */; };
@@ -82,6 +86,10 @@
 		DF22E97A8D48DC2A697D8210 /* Pods-STDebuggerMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STDebuggerMacOS.debug.xcconfig"; path = "Target Support Files/Pods-STDebuggerMacOS/Pods-STDebuggerMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E32188EE230C17AA008593FF /* CustomSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitView.swift; sourceTree = "<group>"; };
 		E37A13E023086FF6001AAA5B /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Packet.swift; path = ../../../client/STDebuggerClient/STDebuggerClient/Classes/Packet.swift; sourceTree = "<group>"; };
+		E388F279231BFF9C00EFB338 /* ThemeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeController.swift; sourceTree = "<group>"; };
+		E388F27D231C14CB00EFB338 /* ThemeDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDragView.swift; sourceTree = "<group>"; };
+		E388F28323212E4D00EFB338 /* Window2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Window2.xib; sourceTree = "<group>"; };
+		E388F28523212E6A00EFB338 /* Window2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window2.swift; sourceTree = "<group>"; };
 		E3AEFDC6230D7011006BB115 /* ContentContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentContainerViewController.swift; sourceTree = "<group>"; };
 		E3AEFDC8230D758B006BB115 /* HttpClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HttpClient.storyboard; sourceTree = "<group>"; };
 		E3AEFDCB230D78FD006BB115 /* UserDefaultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsController.swift; sourceTree = "<group>"; };
@@ -174,6 +182,7 @@
 		D0DEFD0823080765007C96D8 /* STDebuggerMacOS */ = {
 			isa = PBXGroup;
 			children = (
+				E388F278231BFF1800EFB338 /* Theme */,
 				E3D573B6231276B300A10AEC /* ApplicationInformation.swift */,
 				E3D5718C23103D3900A10AEC /* CleanDidFinish.m4a */,
 				E3AEFDCA230D78DB006BB115 /* SP */,
@@ -207,6 +216,17 @@
 				E3D573BC2312ADFB00A10AEC /* FileMonitorManager.swift */,
 			);
 			path = STDebuggerMacOS;
+			sourceTree = "<group>";
+		};
+		E388F278231BFF1800EFB338 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E388F279231BFF9C00EFB338 /* ThemeController.swift */,
+				E388F27D231C14CB00EFB338 /* ThemeDragView.swift */,
+				E388F28323212E4D00EFB338 /* Window2.xib */,
+				E388F28523212E6A00EFB338 /* Window2.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		E3AEFDCA230D78DB006BB115 /* SP */ = {
@@ -321,6 +341,7 @@
 				E3C131EA23096A0B00F9FCCF /* RequestPanelRowView.xib in Resources */,
 				E3D2BE952308EE8700CAEC46 /* demo2.xib in Resources */,
 				D081718F230AB8720081584B /* ResponsePanelController.storyboard in Resources */,
+				E388F28423212E4D00EFB338 /* Window2.xib in Resources */,
 				E3C131DD230939DD00F9FCCF /* bg.jpg in Resources */,
 				E3C131EC230987E500F9FCCF /* RequestPanelCellView.xib in Resources */,
 				E3D2BE912308EE2700CAEC46 /* NavMenuItemController.xib in Resources */,
@@ -383,13 +404,16 @@
 				D081718B230A7DD70081584B /* RequestPanelCellView.swift in Sources */,
 				D006568B230B8598003A5F2F /* BodyController.swift in Sources */,
 				E3D57185230ED8F400A10AEC /* STColor.swift in Sources */,
+				E388F28623212E6A00EFB338 /* Window2.swift in Sources */,
 				E3D573BD2312ADFB00A10AEC /* FileMonitorManager.swift in Sources */,
 				E3D571872310139500A10AEC /* CustomTabView.swift in Sources */,
+				E388F27B231BFF9C00EFB338 /* ThemeController.swift in Sources */,
 				D0C4DBF4230A76B700EC4405 /* RequestPanelRowView.swift in Sources */,
 				D0DEFD1E23080A19007C96D8 /* STDebuggerServer.swift in Sources */,
 				E3D571892310151C00A10AEC /* CustomWindow.swift in Sources */,
 				E3D573B523125FA900A10AEC /* LocalNotificationManager.swift in Sources */,
 				E3AEFDD2230D8D22006BB115 /* WindowContentVc.swift in Sources */,
+				E388F27E231C14CB00EFB338 /* ThemeDragView.swift in Sources */,
 				E3D2BE872308A77F00CAEC46 /* NavMenuController.swift in Sources */,
 				D0065686230ACC09003A5F2F /* HeadersController.swift in Sources */,
 				D0DEFD1C230809A5007C96D8 /* demo.m in Sources */,
