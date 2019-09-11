@@ -1,0 +1,22 @@
+{
+  "name": "STCarUnPack",
+  "version": "0.1.0",
+  "summary": "A short description of STCarUnPack.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/liuaaaddxiaoer/STCarUnPack",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "liuaaaddxiaoer": "liuxiaoer@offcn.com"
+  },
+  "source": {
+    "git": "https://github.com/liuaaaddxiaoer/STCarUnPack.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "osx": "10.10"
+  },
+  "source_files": "STCarUnPack/Classes/**/*"
+}

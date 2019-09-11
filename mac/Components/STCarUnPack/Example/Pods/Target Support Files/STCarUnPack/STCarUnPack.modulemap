@@ -1,0 +1,6 @@
+framework module STCarUnPack {
+  umbrella header "STCarUnPack-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,16 @@
+PODS:
+  - STCarUnPack (0.1.0)
+
+DEPENDENCIES:
+  - STCarUnPack (from `../`)
+
+EXTERNAL SOURCES:
+  STCarUnPack:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  STCarUnPack: 73b4f25e38094990c89f11a252cbdde2614fffaa
+
+PODFILE CHECKSUM: 3254aa357f686a984fc5be6912473f4a1f30ac0d
+
+COCOAPODS: 1.7.2

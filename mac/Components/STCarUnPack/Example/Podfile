@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'STCarUnPack_Example' do
+  pod 'STCarUnPack', :path => '../'
+
+  target 'STCarUnPack_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
