@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'STTranslate_Example' do
+  pod 'STTranslate', :path => '../'
+
+  target 'STTranslate_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

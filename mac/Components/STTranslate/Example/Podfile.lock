@@ -1,0 +1,16 @@
+PODS:
+  - STTranslate (0.1.0)
+
+DEPENDENCIES:
+  - STTranslate (from `../`)
+
+EXTERNAL SOURCES:
+  STTranslate:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  STTranslate: c9f389c8f51b129b360df41f9e8b3a81b12beaea
+
+PODFILE CHECKSUM: ad8fcf97d2173f672bf49429fb84e088be3f7a35
+
+COCOAPODS: 1.7.2

@@ -1,0 +1,22 @@
+{
+  "name": "STTranslate",
+  "version": "0.1.0",
+  "summary": "A short description of STTranslate.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/liuaaaddxiaoer/STTranslate",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "liuaaaddxiaoer": "liuxiaoer@offcn.com"
+  },
+  "source": {
+    "git": "https://github.com/liuaaaddxiaoer/STTranslate.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "osx": "10.10"
+  },
+  "source_files": "STTranslate/Classes/**/*"
+}

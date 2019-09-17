@@ -1,0 +1,6 @@
+framework module STTranslate {
+  umbrella header "STTranslate-umbrella.h"
+
+  export *
+  module * { export * }
+}
