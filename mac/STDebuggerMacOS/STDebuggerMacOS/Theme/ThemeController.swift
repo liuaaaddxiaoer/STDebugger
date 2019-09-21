@@ -27,9 +27,14 @@ class ThemeController: NSViewController {
         attr.addAttribute(NSAttributedString.Key.foregroundColor, value: NSColor.white, range: NSRange(location: 0, length: attr.length))
         chooseBtn.attributedTitle = attr
         
-        
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    
     }
+    
+    @objc func handle() {
+        print(1);
+    }
+    
     // 关闭
     @IBAction func closeClick(_ sender: Any) {
         

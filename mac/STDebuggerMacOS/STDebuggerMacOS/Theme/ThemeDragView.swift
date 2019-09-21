@@ -9,25 +9,30 @@
 import Cocoa
 
 class ThemeDragView: NSView {
-
     
-
+    var type: NSPasteboard.PasteboardType?
     
     required init?(coder decoder: NSCoder) {
-        super.init(coder: decoder)
+        
         if #available(OSX 10.13, *) {
-            registerForDraggedTypes([.fileURL])
+            type = .fileURL
+            
         } else {
             // Fallback on earlier versions
-            registerForDraggedTypes([.fileContents])
+            type = .fileContents
+            
         }
+        
+        super.init(coder: decoder)
+        
+        registerForDraggedTypes([type!])
     }
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         
         
-        NSColor.red.setFill()
+        NSColor.blue.setFill()
         
         NSBezierPath.init(rect: dirtyRect).fill()
         
@@ -36,7 +41,20 @@ class ThemeDragView: NSView {
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         print("draggingEntered")
-        return NSDragOperation.copy
+        let pb = sender.draggingPasteboard
+        let data = pb.string(forType: type!)
+
+        guard var ext = URL.init(string: data!)?.pathExtension else {
+            return .init()
+        }
+        
+        ext = ext.lowercased()
+        
+        if (ext == "png" || ext == "jpg") {
+            return .copy
+        }
+        
+        return .init()
     }
     
     override func draggingEnded(_ sender: NSDraggingInfo) {
@@ -48,19 +66,16 @@ class ThemeDragView: NSView {
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        return true
+        return false
     }
     
-//    override func cursorUpdate(with event: NSEvent) {
-//        print("cursorUpdate")
-//        NSCursor.dragCopy.set()
-//    }
+    override func cursorUpdate(with event: NSEvent) {
+        print("cursorUpdate")
+        NSCursor.dragCopy.set()
+    }
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
         return true
     }
     
-    
-    override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
-        return .copy
-    }
+
 }
